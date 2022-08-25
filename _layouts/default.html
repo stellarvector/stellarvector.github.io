@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ page.title }} | {{ site.title }}</title>
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="shortcut icon" href="/assets/images/logo/stellar-vector-main-smaller.ico" type="image/x-icon">
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="/assets/images/logo/stellar-vector-main-small.png" alt="{{ site.title }} Logo">
+            <div id="nav-div">
+                <div class="top-bar">
+                    <h1 id="site-title"><i>{{ site.title }}</i></h1>
+                    <div class="links">
+                        <a href="{{ site.social.github_link }}" class="nounderline">
+                            <img src="/assets/images/icons/logo-github.svg" alt="Github Logo" target="_blank" width="40px">
+                        </a>
+                        <a href="{{ site.social.ctftime_team_link }}" class="nounderline">
+                            <img src="/assets/images/icons/logo-ctftime.svg" alt="CTFtime Logo" height="40px">
+                        </a>
+                        <a href="{{ site.social.htb_team_link }}" class="nounderline">
+                            <img src="/assets/images/icons/logo-htb.svg" alt="HackTheBox Logo" target="_blank" width="40px">
+                        </a>
+                        <a href="{{ site.social.discord_invite_link }}" class="nounderline">
+                            <img src="/assets/images/icons/logo-discord.svg" alt="Discord Logo" width="40px">
+                        </a>
+                    </div>
+                </div>
+                <nav>
+                    <!-- TODO: automatically generate based on config -->
+                    <a class="button noborder" href="{% link pages/home.md %}">/</a>
+                    <a class="button noborder" href="{% link pages/calendar.html %}">/calendar</a>
+                </nav>
+            </div>
+        </header>
+        <div id="content">
+            {{ content }}
+        </div>
+        <footer>
+            <div>
+                &copy; {{ site.title }}
+            </div>
+            <div class="links">
+                <a href="{{ site.social.github_link }}" class="nounderline">
+                    <img src="/assets/images/icons/logo-github.svg" alt="Github Logo" target="_blank" width="30px">
+                </a>
+                <a href="{{ site.social.ctftime_team_link }}" class="nounderline">
+                    <img src="/assets/images/icons/logo-ctftime.svg" alt="CTFtime Logo" target="_blank" height="30px">
+                </a>
+                <a href="{{ site.social.htb_team_link }}" class="nounderline">
+                    <img src="/assets/images/icons/logo-htb.svg" alt="HackTheBox Logo" target="_blank" width="30px">
+                </a>
+                <a href="{{ site.social.discord_invite_link }}" class="nounderline">
+                    <img src="/assets/images/icons/logo-discord.svg" alt="Discord Logo" target="_blank" width="30px">
+                </a>
+            </div>
+        </footer>
+    </body>
+</html>

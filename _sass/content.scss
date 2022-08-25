@@ -1,0 +1,164 @@
+#content {
+    max-width: $max_content_width;
+    margin: auto;
+    padding: 20px;
+    text-align: justify;
+
+    .flex-title {
+        h1 {
+            margin: 0;
+        }
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .members-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .member-card {
+        background: #222;
+        padding: 15px;
+        border-radius: 5px;
+        max-width: 300px;
+
+        .card-flex {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        &.embed {
+            display: block;
+        }
+
+        h3 {
+            margin: 0 auto;
+        }
+
+        p.dates {
+            margin-top: 5px;
+            text-transform: uppercase;
+            font-size: small;
+            color: grey;
+        }
+
+        .social {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+
+        .tag {
+            text-transform: uppercase;
+            color: white;
+            border: 2px solid white;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: small;
+            cursor: default;
+
+            &.core {
+                border-color: $accent_red;
+                background: $accent_red;
+            }
+
+            &.advisor {
+                border-color: yellow;
+                background: yellow;
+                color: black;
+            }
+
+            &.skill {
+                border-color: green;
+                background: green;
+            }
+        }
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        color: white;
+        background: #222;
+        display: block;
+        border-radius: 5px;
+
+        &.embed {
+            min-width: 30%;
+            margin-top: 0px;
+            margin-bottom: 20px;
+
+            &.float-left {
+                float: left;
+                margin-right: 20px;
+            }
+
+            &.float-right {
+                float: right;
+                margin-left: 20px;
+            }
+        }
+
+        a {
+            color: white;
+            display: block;
+            padding: 15px;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        h3 {
+            margin: 0;
+            font-size: x-large;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: #888;
+            text-transform: uppercase;
+            font-size: small;
+            margin-top: 0px;
+        }
+    }
+
+    iframe#calendar {
+        width: calc(100% - 10px);
+        height: 90vh;
+        padding: 5px;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 40px;
+    }
+
+    h1:first-child {
+        margin-top: 0px;
+    }
+}

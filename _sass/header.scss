@@ -1,0 +1,55 @@
+header {
+    max-width: $max_width;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    border-bottom: 1px dashed $accent_red;
+    padding: 20px;
+    margin: 0 auto;
+
+    img.logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 5px;
+    }
+
+    #nav-div {
+        width: 100%;
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            #site-title {
+                font-size: xxx-large;
+                margin: 0px;
+            }
+
+            .links {
+                display: flex;
+                align-content: center;
+                gap: 10px;
+            }
+        }
+
+        nav {
+            font-size: medium;
+
+            a {
+                color: $accent_red;
+                text-decoration: none;
+                padding: 10px 25px;
+                border-radius: 5px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 600;
+            }
+
+            a:hover {
+                font-style: italic;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+footer {
+    max-width: $max_width;
+    padding: 20px;
+    margin: 0 auto;
+    border-top: 1px dashed $accent_red;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .links {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}

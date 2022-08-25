@@ -1,0 +1,33 @@
+title: Stellar Vector
+email: team@stellarvector.be
+description: >- # this means to ignore newlines until "baseurl:"
+  Stellar Vector is the academic CTF team of the KU Leuven in Belgium. Everyone is welcome to join, whether they are related to the KU Leuven or not.
+baseurl: "/"
+url: "https://stellarvector.be/"
+social:
+  github_link: https://www.github.com/stellar-vector
+  htb_team_link: https://app.hackthebox.com/teams/overview/4886
+  ctftime_team_link: https://www.ctftime.org/team/192988
+  discord_invite_link: https://discord.gg/tbP75TNfNR
+  mailing_list_url: https://groups.google.com/a/stellarvector.be/g/ctf
+calendar:
+  embed_url: https://calendar.google.com/calendar/embed?src=kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com&ctz=Europe%2FBrussels
+  add_link: https://calendar.google.com/calendar/u/0?cid=a2NidDNxNzVhNGZ2ZWw1N3MwNThmZXQ5N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+exclude:
+#   - .sass-cache/
+  - .jekyll-cache/
+#   - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
