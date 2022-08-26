@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Stellar Vector is the academic CTF team of the KU Leuven in Belgium. Everyone is welcome to join, whether they are related to the KU Leuven or not.
 baseurl: "/"
 url: "https://stellarvector.be/"
-version: 1.0.1
+version: 1.0.2
 social:
   github_link: https://www.github.com/stellar-vector
   htb_team_link: https://app.hackthebox.com/teams/overview/4886

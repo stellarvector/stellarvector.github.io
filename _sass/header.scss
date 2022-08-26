@@ -65,6 +65,16 @@ header {
             .links, nav {
                 margin-top: 20px;
             }
+
+            nav {
+                text-align: center;
+            }
+        }
+    }
+
+    @media screen and (max-width: $ultra_mobile_width) {
+        #nav-div .top-bar #site-title {
+            font-size: xx-large;
         }
     }
 }
