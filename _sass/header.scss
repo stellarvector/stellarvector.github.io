@@ -52,4 +52,19 @@ header {
             }
         }
     }
+
+    @media screen and (max-width: $mobile_width) {
+        gap: 0px;
+        flex-direction: column;
+
+        #nav-div {
+            .top-bar {
+                flex-direction: column;
+            }
+
+            .links, nav {
+                margin-top: 20px;
+            }
+        }
+    }
 }
