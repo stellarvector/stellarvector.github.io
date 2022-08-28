@@ -1,12 +1,12 @@
 title: Stellar Vector
 email: team@stellarvector.be
 description: >- # this means to ignore newlines until "baseurl:"
-  Stellar Vector is the academic CTF team of the KU Leuven in Belgium. Everyone is welcome to join, whether they are related to the KU Leuven or not.
+  Stellar Vector is the academic CTF team of the KU Leuven in Belgium.
 baseurl: "/"
 url: "https://stellarvector.be/"
 version: 1.0.2
 social:
-  github_link: https://www.github.com/stellar-vector
+  github_link: https://www.github.com/stellarvector
   htb_team_link: https://app.hackthebox.com/teams/overview/4886
   ctftime_team_link: https://www.ctftime.org/team/192988
   discord_invite_link: https://discord.gg/tbP75TNfNR
