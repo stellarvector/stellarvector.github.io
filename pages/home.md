@@ -6,11 +6,10 @@ permalink: /
 
 # CTF 101 - October 3rd
 
-On Monday the **3rd of October** *Stellar Vector* will organize a starting event called CTF 101 from **18h until 21h**.
+On Monday the **3rd of October** *Stellar Vector* will organize a starting event called CTF 101 from **18h until 21h** in 200A 00.144 (registration is mandatory).
 
-We will introduce the concept of CTFs and give an introduction to the team.
+We will introduce the concept of CTFs (essentially solving mostly security-related challenges) and give an introduction to the team.
 After this, some of our current members will guide you through some challenges that have been previously solved during a CTF we participated in.
-All of this with a slice of **pizza and some drinks**!
 
 You **don't need any experience** in CTFs/software security/hacking in order to participate, we are all there to learn!
 We ask you to register upfront if you are going to join. Please do so using [this form](https://docs.google.com/forms/d/e/1FAIpQLSe1CV-iLJKEL65XVjywlDZxJ_WQacKATWCB6UCexoV6GsI2fQ/viewform).
