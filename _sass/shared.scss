@@ -10,30 +10,6 @@ body {
     margin: 0;
 }
 
-code {
-    font-family: "Fira Code";
-    background: #222;
-    border-radius: 4px;
-    padding: 2px 6px;
-}
-
-.highlight {
-    border-radius: 5px;
-}
-
-pre {
-    font-family: "Fira Code";
-    background: #222;
-    border-radius: 5px;
-    padding: 10px 20px;
-
-    code {
-        padding: 0;
-        background: none;
-        border-radius: 0;
-    }
-}
-
 a {
     text-decoration: none;
     font-weight: 600;
