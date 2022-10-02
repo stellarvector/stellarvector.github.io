@@ -14,6 +14,7 @@ social:
 calendar:
   embed_url: https://calendar.google.com/calendar/embed?src=kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com&ctz=Europe%2FBrussels
   add_link: https://calendar.google.com/calendar/u/0?cid=a2NidDNxNzVhNGZ2ZWw1N3MwNThmZXQ5N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+  ical_address: https://calendar.google.com/calendar/ical/kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com/public/basic.ics
 sass:
   sass_dir: _sass
   style: compressed

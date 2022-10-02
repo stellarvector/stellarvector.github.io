@@ -67,3 +67,13 @@ a {
         }
     }
 }
+
+.text-right {
+    text-align: right;
+}
+
+@media screen and (max-width: $mobile_width) {
+    .mobile\:text-left {
+        text-align: left;
+    }
+}
