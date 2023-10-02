@@ -4,6 +4,17 @@ title: Home
 permalink: /
 ---
 
+# CTF 101 - October 11th
+
+On Wednesday the **11th of October** at **18h30** *Stellar Vector* will organize CTF101, our annual start-to-hack event.
+
+We will introduce the concept of CTFs and give an introduction to the team.
+After this, some of our current members will guide you step by step through some custom challenges.
+No worries if you have more experience, there will also be slightly more difficult challenges for you to try.
+
+You **don't need any experience** in CTFs/software security/hacking in order to participate, we are all there to learn!
+Joining is free, but registration is required. Please do so using [this form](https://forms.gle/vgwaA2jKBLLUBcTu9).
+
 # Home
 
 Welcome to the virtual home of ***Stellar Vector***, a primarily academic CTF team associated with KU Leuven, located in the beautiful town of Leuven (coincidentally also the home of the Stella beer).
