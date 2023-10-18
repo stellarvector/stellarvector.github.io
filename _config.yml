@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Stellar Vector is the academic CTF team of the KU Leuven in Belgium.
 baseurl: "/"
 url: "https://stellarvector.be/"
-version: 1.0.3
+version: 2023.10.18
 social:
   github_link: https://www.github.com/stellarvector
   htb_team_link: https://app.hackthebox.com/teams/overview/4886
@@ -18,6 +18,12 @@ calendar:
 sass:
   sass_dir: _sass
   style: compressed
+
+collections:
+  events:
+    output: true
+    permalink: "/:collection/:path"
+future: true
 
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.

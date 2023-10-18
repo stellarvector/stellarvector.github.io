@@ -4,16 +4,15 @@ title: Home
 permalink: /
 ---
 
-# CTF 101 - October 11th
-
-On Wednesday the **11th of October** at **18h30** *Stellar Vector* will organize CTF101, our annual start-to-hack event.
-
-We will introduce the concept of CTFs and give an introduction to the team.
-After this, some of our current members will guide you step by step through some custom challenges.
-No worries if you have more experience, there will also be slightly more difficult challenges for you to try.
-
-You **don't need any experience** in CTFs/software security/hacking in order to participate, we are all there to learn!
-Joining is free, but registration is required. Please do so using [this form](https://forms.gle/vgwaA2jKBLLUBcTu9).
+{% comment %} Insert upcoming events at the top of the homepage {% endcomment %}
+{% comment %} Note: cannot use indentation: it will get interpreted as a code block in Markdown {% endcomment %}
+{% assign upcoming_events = site.events | where_exp: "event", "event.date >= site.time" %}
+{% if upcoming_events.size > 0 %}
+{% for event in upcoming_events reversed %}
+# {{ event.title }} - {{ event.date | date: "%B %d" }}
+{{ event.content }}
+{% endfor %}
+{% endif %}
 
 # Home
 
