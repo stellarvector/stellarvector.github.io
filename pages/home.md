@@ -4,13 +4,15 @@ title: Home
 permalink: /
 ---
 
-{% comment %} Insert upcoming events at the top of the homepage {% endcomment %}
-{% comment %} Note: cannot use indentation: it will get interpreted as a code block in Markdown {% endcomment %}
 {% assign upcoming_events = site.events | where_exp: "event", "event.date >= site.time" %}
 {% if upcoming_events.size > 0 %}
 {% for event in upcoming_events reversed %}
-# {{ event.title }} - {{ event.date | date: "%B %d" }}
-{{ event.content }}
+
+<div class="event">
+    <h1>{{ event.title }} - {{ event.date | date: "%B %d" }}</h1>
+    {{ event.content }}
+</div>
+
 {% endfor %}
 {% endif %}
 
