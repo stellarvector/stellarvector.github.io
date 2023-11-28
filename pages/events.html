@@ -1,0 +1,45 @@
+---
+layout: default
+title: Events
+permalink: /events
+---
+
+<div class="flex-title">
+    <h1>Events</h1>
+</div>
+
+<h2>Upcoming events</h2>
+
+{% assign upcoming_events = site.events | where_exp: "event", "event.date >= site.time" %}
+
+{% if upcoming_events.size == 0 %}
+    <p>There are currently no larger events planned. Check back soon!</p>
+{% else %}
+    <div class="events">
+    {% for event in upcoming_events reversed %}
+        <div class="event-box">
+            <div>
+                <h3>{{ event.title }}</h2>
+                <p>{{ event.date | date: "%A %d %B %Y, %H:%M" }}</p>
+            </div>
+            <a class="button" href="{{ event.url }}">More info</a>
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+
+<h2>Past events</h2>
+
+{% assign past_events = site.events | where_exp: "event", "event.date < site.time" %}
+
+<div class="events">
+{% for event in past_events reversed %}
+    <div class="event-box">
+        <div>
+            <h3>{{ event.title }}</h2>
+            <p>{{ event.date | date: "%d %B %Y, %H:%M" }}</p>
+        </div>
+        <a class="button" href="{{ event.url }}">More info</a>
+    </div>
+{% endfor %}
+</div>
