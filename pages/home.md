@@ -29,4 +29,4 @@ We intend to participate in CTFs approximately on a monthly basis, and organize 
 Join our mailing list via [Google Groups]({{ site.social.mailing_list_url }}). When requesting access, tell us a bit about yourself!
 Also feel free to join our [Discord Server]({{ site.social.discord_invite_link }}). Please choose a name on Discord that allows us to identify you.
 
-If you would like to help us organizing our activities, send us an email at [{{ site.email }}](mailto:{{ site.email }}).
+If you would like to reach out, send us an email at [{{ site.email }}](mailto:{{ site.email }}).
