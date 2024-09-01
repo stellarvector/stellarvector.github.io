@@ -4,13 +4,18 @@ description: >- # this means to ignore newlines until "baseurl:"
   Stellar Vector is the academic CTF team of the KU Leuven in Belgium.
 baseurl: "/"
 url: "https://stellarvector.be/"
-version: 2024.08.26
+version: 2024.09.01
 social:
   github_link: https://www.github.com/stellarvector
   htb_team_link: https://app.hackthebox.com/teams/overview/4886
   ctftime_team_link: https://www.ctftime.org/team/192988
   discord_invite_link: https://discord.gg/tbP75TNfNR
   mailing_list_url: https://groups.google.com/a/stellarvector.be/g/ctf
+  linkedin_page_link: https://www.linkedin.com/company/stellarvector/
+  x_page_link: https://x.com/stellar_vector
+  facebook_page_link: https://www.facebook.com/stellarvector.be
+  instagram_page_link: https://www.instagram.com/stellar.vector
+  loko_link: https://www.loko.be/en/societies#:~:text=Stellar%20Vector,Visit%20website
 calendar:
   embed_url: https://calendar.google.com/calendar/embed?src=kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com&ctz=Europe%2FBrussels
   add_link: https://calendar.google.com/calendar/u/0?cid=a2NidDNxNzVhNGZ2ZWw1N3MwNThmZXQ5N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
