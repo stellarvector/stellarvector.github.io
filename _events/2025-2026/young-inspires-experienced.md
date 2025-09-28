@@ -25,4 +25,6 @@ Whether you're a student, tech enthusiast, or just curious about hacking and def
 
 Participation is free, registration is required.
 
+Sign up [here]({{ page.signup }}).
+
 (event text from the [ie-net event page](https://www.ie-net.be/civicrm/event/info?id=3918))
