@@ -1,23 +1,33 @@
 html,
 body {
-    background-color: black;
-    color: white;
-    font-family: Montserrat;
+    background-color: $background;
+    color: $text;
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--font-size-base);
 }
 
 body {
     line-height: 1.6;
     margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+h1 { font-size: var(--font-size-h1); margin-bottom: 1.5rem; }
+h2 { font-size: var(--font-size-h2); margin-top: 2rem; margin-bottom: 1rem; }
+h3 { font-size: var(--font-size-h3); margin-top: 1.5rem; margin-bottom: 0.75rem; }
 
 a {
     text-decoration: none;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: $accent_red;
+    transition: all $transition_speed ease;
 
     &:hover {
+        color: lighten($accent_red, 10%);
         text-decoration: underline dashed;
+        text-shadow: 0 0 8px $accent_red_glow;
     }
 
     &.nounderline {
@@ -26,21 +36,66 @@ a {
     }
 
     &.button {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
         text-transform: uppercase;
-        padding: 10px 25px;
-        border-radius: 5px;
+        padding: 10px 24px;
+        border-radius: 4px;
+        font-size: var(--font-size-small);
+        letter-spacing: 1px;
+        color: $text;
+        background: rgba($accent_red, 0.1);
+        border: 1px solid rgba($accent_red, 0.4);
+        transition: all $transition_speed ease;
 
-        &:not(.noborder) {
-            border: 1px dashed $accent_red;
+        &.noborder {
+            background: transparent;
+            border-color: transparent;
+        }
+
+        &.primary {
+            background: $accent_red;
+            border-color: $accent_red;
+            color: white !important;
+            font-weight: 700;
+            box-shadow: 0 4px 15px $accent_red_glow;
+            
+            &:hover {
+                background: lighten($accent_red, 5%);
+                border-color: lighten($accent_red, 5%);
+                box-shadow: 0 6px 20px rgba($accent_red, 0.6);
+            }
         }
 
         &:hover {
-            background-color: $accent_red;
-            color: $text !important;
+            background-color: rgba($accent_red, 0.2);
+            border-color: $accent_red;
+            color: white !important;
             text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            text-shadow: none;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+        img {
+            height: 1.2em;
+            width: auto;
+            transition: transform $transition_speed ease;
+        }
+
+        &:hover img {
+            transform: scale(1.1);
         }
     }
+}
+
+.text-muted {
+    color: $text_muted;
 }
 
 .text-right {

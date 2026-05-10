@@ -11,15 +11,17 @@
         <header>
             <div id="nav-div">
                 <div class="top-bar">
-                    <img class="logo" src="/assets/logo/logo-dark.png" alt="{{ site.title }} Logo">
+                    <a href="{% link pages/home.md %}">
+                        <img class="logo" src="/assets/logo/logo-dark.png" alt="{{ site.title }} Logo">
+                    </a>
                 </div>
                 <nav>
-                    <!-- TODO: automatically generate based on config -->
-                    <a class="button noborder" href="{% link pages/home.md %}">/home</a>
-                    <a class="button noborder" href="{% link pages/calendar.html %}">/calendar</a>
-                    <a class="button noborder" href="{% link pages/events.html %}">/events</a>
+                    {% assign current_page = page.url | remove: 'index.html' %}
+                    <a class="button noborder {% if current_page == '/' %}active{% endif %}" href="{% link pages/home.md %}">/home</a>
+                    <a class="button noborder {% if current_page contains '/calendar' %}active{% endif %}" href="{% link pages/calendar.html %}">/calendar</a>
+                    <a class="button noborder {% if current_page contains '/events' %}active{% endif %}" href="{% link pages/events.html %}">/events</a>
                     <a class="button noborder" href="//blog.stellarvector.be/">/blog</a>
-                    <a class="button" href="https://find.stellarvector.be/">Find us online</a>
+                    <a class="button primary" href="{% link pages/launchpad.md %}">JOIN US</a>
                 </nav>
             </div>
         </header>
@@ -33,6 +35,10 @@
                 A <a href="{{ site.social.loko_link }}" class="nounderline">
                     <img src="/assets/images/icons/logo-loko.svg" alt="LOKO Logo" target="_blank" height="16px" style="vertical-align: text-bottom">
                 </a> recognized association
+                <div style="margin-top: 10px; opacity: 0.8; font-size: 0.8rem;">
+                    Stellar Vector is powered by the <a href="//distrinet.cs.kuleuven.be">DistriNet research group</a> and the <a href="//kuleuven.be">KU Leuven</a>.
+                </div>
+                <a href="https://find.stellarvector.be" class="social-hub-link">Find us online &rarr;</a>
             </div>
             <div class="links">
                 <a href="{{ site.social.github_link }}" class="nounderline">
@@ -61,6 +67,27 @@
                 </a>
             </div>
         </footer>
+
+        <button id="scroll-top" title="Go to top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
+
+        <script>
+            const scrollTopBtn = document.getElementById("scroll-top");
+            window.onscroll = function() {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    scrollTopBtn.classList.add("visible");
+                } else {
+                    scrollTopBtn.classList.remove("visible");
+                }
+            };
+            scrollTopBtn.onclick = function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            };
+        </script>
+
         <script defer data-domain="stellarvector.be" src="https://plausible.stellarvector.be/js/script.file-downloads.hash.outbound-links.js"></script>
     </body>
 </html>

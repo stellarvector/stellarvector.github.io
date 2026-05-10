@@ -1,17 +1,124 @@
 footer {
     max-width: $max_width;
-    padding: 20px;
+    padding: 60px 20px;
     margin: 0 auto;
-    border-top: 1px dashed $accent_red;
+    border-top: 1px dashed rgba($accent_red, 0.3);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
+
+    color: $text_muted;
+    font-size: 0.85rem;
+    line-height: 1.5;
+
+    .social-hub-link {
+        display: inline-block;
+        margin-top: 12px;
+        color: $accent_red;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        transition: all $transition_speed ease;
+
+        &:hover {
+            color: lighten($accent_red, 10%);
+            text-decoration: none;
+            text-shadow: 0 0 8px $accent_red_glow;
+            transform: translateX(5px);
+        }
+    }
 
     .links {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 15px;
         align-items: center;
+        justify-content: flex-end;
+
+        a.nounderline {
+            display: flex;
+            align-items: center;
+            opacity: 0.5;
+            transition: all $transition_speed ease;
+
+            img {
+                filter: grayscale(1) invert(0.2);
+                transition: all $transition_speed ease;
+            }
+
+            &:hover {
+                opacity: 1;
+                transform: translateY(-3px);
+
+                img {
+                    filter: grayscale(0) invert(0);
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $mobile_width) {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+
+        .links {
+            justify-content: center;
+        }
+    }
+}
+
+// Scroll to top button
+#scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba($background, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba($accent_red, 0.3);
+    color: $accent_red;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition_speed ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+    padding: 0;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        transition: transform $transition_speed ease;
+    }
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:hover {
+        background: rgba($accent_red, 0.1);
+        border-color: $accent_red;
+        box-shadow: 0 0 15px rgba($accent_red, 0.4);
+        
+        svg {
+            transform: translateY(-3px);
+        }
+    }
+
+    @media screen and (max-width: $mobile_width) {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
     }
 }

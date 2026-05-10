@@ -1,62 +1,102 @@
 header {
-    max-width: $max_width;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    border-bottom: 1px dashed $accent_red;
-    padding: 20px;
-    margin: 0 auto;
-
-    img.logo {
-        height: 180px;
-        border-radius: 5px;
-    }
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba($background, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px dashed rgba($accent_red, 0.4);
+    transition: all $transition_speed ease;
+    padding: 12px 0;
 
     #nav-div {
-        width: 100%;
+        max-width: $max_width;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
 
         .top-bar {
             display: flex;
-            justify-content: center;
             align-items: center;
+
+            img.logo {
+                height: 60px;
+                width: auto;
+                border-radius: 4px;
+                transition: transform $transition_speed ease;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
         }
 
         nav {
-            font-size: medium;
-            margin-top: 10px;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 5px;
+            align-items: center;
+            gap: 8px;
+            margin-top: 0;
 
-            a {
-                color: $accent_red;
-                text-decoration: none;
-                padding: 10px 25px;
-                border-radius: 5px;
-                text-transform: uppercase;
+            a.button {
+                padding: 8px 18px;
+                font-size: 0.85rem;
                 letter-spacing: 1px;
-                font-weight: 600;
+                position: relative;
+                
+                &.active {
+                    color: $accent_red !important;
+                    
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 15%;
+                        width: 70%;
+                        height: 2px;
+                        background: $accent_red;
+                        border-radius: 2px;
+                        box-shadow: 0 0 8px $accent_red;
+                    }
+                }
+
+                &.noborder:hover {
+                    background: rgba($accent_red, 0.1);
+                    border-color: rgba($accent_red, 0.2);
+                    box-shadow: none;
+                }
             }
         }
     }
 
     @media screen and (max-width: $mobile_width) {
-        gap: 0px;
-        flex-direction: column;
+        position: relative; // Disable sticky on mobile
+        padding: 15px 0;
 
         #nav-div {
+            flex-direction: column;
+            gap: 15px;
+            
             nav {
-                margin-top: 20px;
-                text-align: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px 8px;
+
+                a.button {
+                    padding: 6px 12px;
+
+                    &.active::after {
+                        bottom: -2px;
+                    }
+                }
             }
         }
     }
 
     @media screen and (max-width: $ultra_mobile_width) {
-        #nav-div .top-bar #site-title {
-            font-size: xx-large;
+        #nav-div .top-bar img.logo {
+            height: 50px;
         }
     }
 }
