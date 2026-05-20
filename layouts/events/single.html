@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="flex justify-between items-center mb-8">
+    <h1 class="m-0 relative after:content-[''] after:block after:absolute after:bottom-[-8px] after:left-0 after:width-[40px] after:height-[3px] after:bg-accent-red">{{ .Title }}</h1>
+</div>
+
+<div class="prose prose-invert prose-lg max-w-none text-text">
+    {{ .Content }}
+</div>
+{{ end }}

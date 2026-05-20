@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "hugo_stats.json";
+
+@theme {
+  --color-background: #050505;
+  --color-background-alt: #0a0a0a;
+  --color-text: #e0e0e0;
+  --color-text-muted: #a0a0a0;
+  --color-accent-red: #B21010;
+  --color-accent-red-glow: rgba(178, 16, 16, 0.4);
+
+  --font-montserrat: "Montserrat", sans-serif;
+
+  --max-width: 1000px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.8rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
+  h3 { font-size: 1.4rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+
+  a {
+    color: var(--color-accent-red);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+
+  a:hover {
+    color: #cc1212;
+    text-decoration: underline dashed;
+    text-shadow: 0 0 8px var(--color-accent-red-glow);
+  }
+}

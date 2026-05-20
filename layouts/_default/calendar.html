@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="flex justify-between items-center mb-8">
+    <h1 class="m-0 relative after:content-[''] after:block after:absolute after:bottom-[-8px] after:left-0 after:w-[40px] after:h-[3px] after:bg-accent-red">CTF Participation Calendar</h1>
+</div>
+
+<div class="bg-background-alt/40 border border-white/5 rounded-xl p-8 flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+    <div class="max-w-xl text-text-muted leading-relaxed">
+        Keep track of our upcoming competitions, training sessions, and team meetings. Sync our schedule with your own to never miss a flag!
+    </div>
+    <div class="flex flex-wrap gap-4 justify-center md:justify-end w-full md:w-auto">
+        <a class="inline-flex items-center justify-center gap-[10px] uppercase py-2.5 px-6 rounded-[4px] text-[0.875rem] tracking-[1px] text-white bg-accent-red border border-accent-red transition-all duration-300 no-underline cursor-pointer font-bold shadow-[0_4px_15px_var(--color-accent-red-glow)] hover:bg-[#c41111] hover:border-[#c41111] hover:shadow-[0_6px_20px_rgba(178,16,16,0.6)] active:scale-95 w-full md:w-auto" href="{{ .Site.Params.calendar.add_link }}" target="_blank">
+            Add to Google Calendar
+        </a>
+        <a class="inline-flex items-center justify-center gap-[10px] uppercase py-2.5 px-6 rounded-[4px] text-[0.875rem] tracking-[1px] text-text bg-transparent border border-accent-red/40 transition-all duration-300 no-underline cursor-pointer hover:bg-accent-red/10 hover:border-accent-red hover:text-white hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)] active:scale-95 w-full md:w-auto" href="{{ .Site.Params.calendar.ical_address }}" target="_blank">
+            iCal Feed
+        </a>
+    </div>
+</div>
+
+<div class="w-full mt-5 border-2 border-accent-red rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden bg-white">
+    <iframe id="calendar" src="{{ .Site.Params.calendar.embed_url }}" class="w-full h-[700px] block invert-[0.9] hue-rotate-180 brightness-[1.1] contrast-[0.9]" frameborder="0" scrolling="no"></iframe>
+</div>
+{{ end }}
+
