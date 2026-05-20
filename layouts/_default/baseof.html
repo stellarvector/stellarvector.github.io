@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="{{ .Language.Locale }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+        {{ $styles := resources.Get "css/main.css" | resources.ExecuteAsTemplate "css/main.css" . | css.TailwindCSS }}
+        <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+        <link rel="shortcut icon" href="/assets/logo/favicon.ico" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    </head>
+    <body class="bg-background text-text font-montserrat antialiased selection:bg-accent-red/30 selection:text-white leading-[1.6]">
+        <header class="md:sticky top-0 z-[1000] bg-background/85 backdrop-blur-xl border-b border-dashed border-accent-red/40 transition-all duration-300 py-3 relative">
+            <div id="nav-div" class="max-w-[1000px] mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-[15px] md:gap-0">
+                <div class="top-bar flex items-center">
+                    <a href="/">
+                        <img class="h-[50px] md:h-[60px] w-auto rounded-[4px] transition-transform duration-300 hover:scale-105" src="/assets/logo/logo-dark.png" alt="{{ .Site.Title }} Logo">
+                    </a>
+                </div>
+                <nav class="flex items-center justify-center flex-wrap gap-x-2 gap-y-3 md:gap-2">
+                    <a class="inline-flex items-center justify-center gap-[10px] uppercase py-[6px] px-3 md:py-2 md:px-[18px] rounded-[4px] text-[0.85rem] tracking-[1px] text-text bg-transparent border border-transparent transition-all duration-300 no-underline relative hover:bg-accent-red/10 hover:border-accent-red/20 hover:text-white {{ if .IsHome }}!text-accent-red after:content-[''] after:block after:absolute after:bottom-[-2px] md:after:bottom-0 after:left-[15%] after:w-[70%] after:h-[2px] after:bg-accent-red after:rounded-[2px] after:shadow-[0_0_8px_#B21010]{{ end }}" href="/">/home</a>
+                    <a class="inline-flex items-center justify-center gap-[10px] uppercase py-[6px] px-3 md:py-2 md:px-[18px] rounded-[4px] text-[0.85rem] tracking-[1px] text-text bg-transparent border border-transparent transition-all duration-300 no-underline relative hover:bg-accent-red/10 hover:border-accent-red/20 hover:text-white {{ if (strings.Contains .RelPermalink "/calendar") }}!text-accent-red after:content-[''] after:block after:absolute after:bottom-[-2px] md:after:bottom-0 after:left-[15%] after:w-[70%] after:h-[2px] after:bg-accent-red after:rounded-[2px] after:shadow-[0_0_8px_#B21010]{{ end }}" href="/calendar">/calendar</a>
+                    <a class="inline-flex items-center justify-center gap-[10px] uppercase py-[6px] px-3 md:py-2 md:px-[18px] rounded-[4px] text-[0.85rem] tracking-[1px] text-text bg-transparent border border-transparent transition-all duration-300 no-underline relative hover:bg-accent-red/10 hover:border-accent-red/20 hover:text-white {{ if (strings.Contains .RelPermalink "/events") }}!text-accent-red after:content-[''] after:block after:absolute after:bottom-[-2px] md:after:bottom-0 after:left-[15%] after:w-[70%] after:h-[2px] after:bg-accent-red after:rounded-[2px] after:shadow-[0_0_8px_#B21010]{{ end }}" href="/events">/events</a>
+                    <a class="inline-flex items-center justify-center gap-[10px] uppercase py-[6px] px-3 md:py-2 md:px-[18px] rounded-[4px] text-[0.85rem] tracking-[1px] text-text bg-transparent border border-transparent transition-all duration-300 no-underline relative hover:bg-accent-red/10 hover:border-accent-red/20 hover:text-white" href="https://blog.stellarvector.be/">/blog</a>
+                    <a class="inline-flex items-center justify-center gap-[10px] uppercase py-2 px-[18px] rounded-[4px] text-[0.85rem] tracking-[1px] text-white bg-accent-red border border-accent-red transition-all duration-300 no-underline cursor-pointer font-bold shadow-[0_4px_15px_var(--color-accent-red-glow)] hover:bg-[#c41111] hover:border-[#c41111] hover:shadow-[0_6px_20px_rgba(178,16,16,0.6)] active:scale-95 md:ml-2" href="/launchpad">JOIN US!</a>
+                </nav>
+            </div>
+        </header>
+        
+        <main id="content" class="max-w-[1000px] mx-auto px-5 min-h-[calc(100vh-300px)] py-10">
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        <footer class="max-w-[1000px] mx-auto px-5 py-[60px] border-t border-dashed border-accent-red/30 flex flex-col md:flex-row justify-between items-center gap-[30px] text-text-muted text-[0.85rem] leading-[1.5]">
+            <div class="md:text-left text-center">
+                &copy; {{ .Site.Title }} {{ now.Year }}
+                <br>
+                A <a href="{{ .Site.Params.social.loko_link }}" class="inline-flex items-center opacity-100 hover:opacity-80 transition-all duration-300 no-underline">
+                    <img src="/assets/images/icons/logo-loko.svg" alt="LOKO Logo" class="h-4 align-text-bottom">
+                </a> recognized association
+                <div class="mt-2.5 opacity-80 max-w-md">
+                    Stellar Vector is powered by the <a href="https://distrinet.cs.kuleuven.be" class="text-accent-red font-semibold hover:text-white transition-colors no-underline hover:underline hover:underline-dashed">DistriNet research group</a> and the <a href="https://kuleuven.be" class="text-accent-red font-semibold hover:text-white transition-colors no-underline hover:underline hover:underline-dashed">KU Leuven</a>.
+                </div>
+                <a href="https://find.stellarvector.be" class="social-hub-link inline-block mt-3 text-accent-red font-bold uppercase text-[0.75rem] tracking-[1px] hover:translate-x-[5px] transition-all duration-300 no-underline hover:text-[#cc1212] hover:text-shadow-[0_0_8px_var(--color-accent-red-glow)]">Find us online &rarr;</a>
+            </div>
+            <div class="links flex flex-wrap gap-[15px] items-center justify-center md:justify-end">
+                {{ range $key, $val := .Site.Params.social }}
+                    {{ if (and (strings.HasSuffix $key "_link") (not (in (slice "loko_link" "discord_invite_link" "mailing_list_url") $key))) }}
+                        {{ $icon_name := index (split $key "_") 0 }}
+                        <a href="{{ $val }}" class="opacity-50 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-300 grayscale invert-[0.2] hover:grayscale-0 hover:invert-0 flex items-center">
+                            <img src="/assets/images/icons/logo-{{ $icon_name }}.svg" alt="{{ $icon_name }} Logo" class="h-[30px] transition-all duration-300">
+                        </a>
+                    {{ end }}
+                {{ end }}
+                <a href="{{ .Site.Params.social.discord_invite_link }}" class="opacity-50 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-300 grayscale invert-[0.2] hover:grayscale-0 hover:invert-0 flex items-center">
+                    <img src="/assets/images/icons/logo-discord.svg" alt="Discord Logo" class="w-[30px] transition-all duration-300">
+                </a>
+            </div>
+        </footer>
+
+        <button id="scroll-top" class="fixed bottom-[30px] right-[30px] w-[50px] h-[50px] rounded-full bg-background/50 backdrop-blur-[10px] border border-accent-red/30 text-accent-red flex items-center justify-center cursor-pointer transition-all duration-300 opacity-0 invisible z-[999] p-0 hover:bg-accent-red/10 hover:border-accent-red hover:shadow-[0_0_15px_rgba(178,16,16,0.4)]" title="Go to top">
+            <svg class="w-6 h-6 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
+
+        <script>
+            const scrollTopBtn = document.getElementById("scroll-top");
+            window.onscroll = function() {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    scrollTopBtn.classList.add("visible");
+                    scrollTopBtn.classList.remove("invisible");
+                    scrollTopBtn.style.opacity = "1";
+                } else {
+                    scrollTopBtn.classList.remove("visible");
+                    scrollTopBtn.classList.add("invisible");
+                    scrollTopBtn.style.opacity = "0";
+                }
+            };
+            scrollTopBtn.onclick = function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            };
+        </script>
+
+        <script defer data-domain="stellarvector.be" src="https://plausible.stellarvector.be/js/script.file-downloads.hash.outbound-links.js"></script>
+    </body>
+</html>

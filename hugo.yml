@@ -1,0 +1,41 @@
+baseURL: "https://stellarvector.be/"
+title: "Stellar Vector"
+locale: "en"
+
+build:
+  buildStats:
+    enable: true
+
+module:
+  imports:
+    - path: "github.com/stellarvector/theme"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  email: "team@stellarvector.be"
+  description: "Stellar Vector is the academic CTF team of the KU Leuven in Belgium."
+  version: "2024.10.27"
+
+  TailwindCSS:
+    enable: true
+
+  social:
+    github_link: "https://www.github.com/stellarvector"
+    htb_team_link: "https://app.hackthebox.com/teams/overview/4886"
+    ctftime_team_link: "https://www.ctftime.org/team/192988"
+    discord_invite_link: "https://discord.gg/tbP75TNfNR"
+    mailing_list_url: "https://groups.google.com/a/stellarvector.be/g/ctf"
+    linkedin_page_link: "https://www.linkedin.com/company/stellarvector/"
+    x_page_link: "https://x.com/stellar_vector"
+    facebook_page_link: "https://www.facebook.com/stellarvector.be"
+    instagram_page_link: "https://www.instagram.com/stellar.vector"
+    loko_link: "https://www.loko.be/en/societies#:~:text=Stellar%20Vector,Visit%20website"
+
+  calendar:
+    embed_url: "https://calendar.google.com/calendar/embed?src=kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com&ctz=Europe%2FBrussels"
+    add_link: "https://calendar.google.com/calendar/u/0?cid=a2NidDNxNzVhNGZ2ZWw1N3MwNThmZXQ5N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
+    ical_address: "https://calendar.google.com/calendar/ical/kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com/public/basic.ics"
