@@ -2,13 +2,13 @@
     <div class="md:text-left text-center">
         &copy; {{ .Site.Title }} {{ now.Year }}
         <br>
-        A <a href="{{ .Site.Params.social.loko_link }}" class="inline-flex items-center opacity-100 hover:opacity-80 transition-all duration-300 no-underline">
+        A <a href="{{ .Site.Params.social.loko_link }}" class="inline-flex items-center opacity-100 transition-all duration-300">
             <img src="/assets/images/icons/logo-loko.svg" alt="LOKO Logo" class="h-4 align-text-bottom light:invert-[0.9]">
         </a> recognized association
         <div class="mt-2.5 max-w-md">
-            Stellar Vector is powered by the <a href="https://distrinet.cs.kuleuven.be" class="text-accent-light font-bold transition-colors no-underline hover:underline hover:underline-dashed">DistriNet research group</a> and the <a href="https://kuleuven.be" class="text-accent-light font-semibold transition-colors no-underline hover:underline hover:underline-dashed">KU Leuven</a>.
+            Stellar Vector is powered by the <a href="https://distrinet.cs.kuleuven.be">DistriNet research group</a> and the <a href="https://kuleuven.be">KU Leuven</a>.
         </div>
-        <a href="https://find.stellarvector.be/?utm_source=stellarvector.be&utm_content=footer" class="social-hub-link inline-block mt-3 text-accent-light font-bold uppercase no-underline">&gt; find us online</a>
+        <a href="https://find.stellarvector.be/?utm_source=stellarvector.be&utm_content=footer" class="social-hub-link font-mono inline-block mt-3 text-accent-light font-bold uppercase no-underline">&gt; find us online</a>
     </div>
     <div class="links flex flex-wrap gap-[15px] items-center justify-center md:justify-end">
         {{ range $key, $val := .Site.Params.social }}

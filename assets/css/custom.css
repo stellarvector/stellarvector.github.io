@@ -1,38 +1,5 @@
-@custom-variant light (&:where(.light, .light *));
-
-@theme {
-  --color-background: #050505;
-  --color-background-alt: #0a0a0a;
-  --color-text: #e0e0e0;
-  --color-text-muted: #a0a0a0;
-  --color-accent-red: #B21010;
-  --color-accent-red-glow: rgba(178, 16, 16, 0.4);
-
-  --font-montserrat: "Montserrat", sans-serif;
-
-  --max-width: 1000px;
-}
-
-@layer base {
-  body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-family: var(--font-montserrat);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
-  }
-
-  a {
-    color: var(--color-accent-red);
-    text-decoration: none;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-  }
-
-  a:hover {
-    color: #cc1212;
-    text-decoration: underline dashed;
-  }
+@layer utilities {
+    .btn {
+        @apply no-underline hover:no-underline;
+    }
 }
