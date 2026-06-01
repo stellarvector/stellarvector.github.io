@@ -1,0 +1,17 @@
+<header class="md:sticky top-0 z-1000 bg-page border-b border-dashed border-accent py-3">
+    <div class="max-w-5xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+        <div class="flex items-center">
+            <a href="/">
+                <img class="h-16 md:h-20 w-auto transition-transform duration-300 hover:scale-105 light:hidden block" src="/assets/logo/logo-dark.png" alt="{{ .Site.Title }} Logo">
+                <img class="h-16 md:h-20 w-auto transition-transform duration-300 hover:scale-105 light:block hidden" src="/assets/logo/logo-light.png" alt="{{ .Site.Title }} Logo">
+            </a>
+        </div>
+        <nav class="flex items-center justify-center flex-wrap gap-x-1 gap-y-3">
+            {{ partial "nav-link.html" (dict "page" . "text" "/home" "url" "/") }}
+            {{ partial "nav-link.html" (dict "page" . "text" "/calendar" "url" "/calendar") }}
+            {{ partial "nav-link.html" (dict "page" . "text" "/events" "url" "/events") }}
+            {{ partial "nav-link.html" (dict "page" . "text" "/blog" "url" "https://blog.stellarvector.be/?utm_source=stellarvector.be") }}
+            <a class="py-2 px-4 rounded-sm text-accent-text hover:text-accent-text bg-accent transition-all duration-300 hover:no-underline font-bold hover:bg-accent-light md:ml-3" href="/launchpad">join us!</a>
+        </nav>
+    </div>
+</header>

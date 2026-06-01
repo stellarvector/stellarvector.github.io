@@ -1,10 +1,8 @@
 ---
-title: '🚀 Ready? Set. Go!'
+title: 'Ready? Set. Go! 🚀'
 layout: launchpad
 ---
 
-<!-- Welcome hacker! Someone left something here for you, but it is unreadable. If you manage to correctly descramble the message, you'll see what we call a 'flag' of the format 'sv{...}'. That is your prize, your proof of correct work! It's what you submit at play.stellarvector.be to get your first points. Good luck :)  -->
-<!-- c3Z7dzNsY29tZV90MF9zdGVsbGFyX3ZlY3Rvcl9oNHgwciEhfQ== -->
 
 ### Have questions?
 

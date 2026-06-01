@@ -13,4 +13,4 @@ We intend to participate in CTFs approximately on a monthly basis, and organize 
 Our [Discord Server](https://discord.gg/tbP75TNfNR) is the main communication channel. Feel free to join, it's the best way to get to know everyone!
 We also have a mailing list through [Google Groups](https://groups.google.com/a/stellarvector.be/g/ctf). When requesting access, tell us a bit about yourself!
 
-If you would like to reach out, send us an email at [team@stellarvector.be](mailto:team@stellarvector.be).
+If you would like to reach out, say hi using [hey@stellarvector.be](mailto:hey@stellarvector.be).

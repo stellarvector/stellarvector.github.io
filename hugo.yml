@@ -6,6 +6,12 @@ build:
   buildStats:
     enable: true
 
+buildFuture: true
+
+disableKinds:
+  - taxonomy
+  - term
+
 module:
   imports:
     - path: "github.com/stellarvector/theme"
@@ -18,7 +24,7 @@ markup:
 params:
   email: "team@stellarvector.be"
   description: "Stellar Vector is the academic CTF team of the KU Leuven in Belgium."
-  version: "2024.10.27"
+  version: "2026.06.01"
 
   TailwindCSS:
     enable: true

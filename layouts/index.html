@@ -3,24 +3,19 @@
     {{ $upcoming = where $upcoming "Date" "ge" now }}
     {{ if $upcoming }}
         {{ $featured := index $upcoming.Reverse 0 }}
-        <div class="mb-16">
-            <span class="inline-block text-accent-red text-[0.75rem] font-bold uppercase tracking-[2px] mb-4 pl-3 border-l-2 border-accent-red">Upcoming Event</span>
-            <div class="bg-background-alt/50 border border-white/5 rounded-xl p-8 flex flex-col gap-[15px] transition-all duration-300 relative overflow-hidden group before:content-[''] before:absolute before:top-0 before:left-0 before:w-[4px] before:h-0 before:bg-accent-red before:transition-all before:duration-300 before:z-10 hover:before:h-full after:content-[''] after:absolute after:top-0 after:right-0 after:w-[150px] after:h-[150px] after:bg-[radial-gradient(circle_at_top_right,rgba(178,16,16,0.05),transparent_70%)] after:pointer-events-none">
-                <div class="text-accent-red font-semibold text-[0.9rem]">{{ $featured.Date.Format "Monday, January 02, 2006 @ 15:04" }}</div>
-                <h2 class="group-hover:text-white transition-colors !mt-0 !mb-0">{{ $featured.Title }}</h2>
-                <div class="text-text-muted text-[1rem] leading-[1.6] line-clamp-3">
-                    {{ $featured.Summary | plainify }}
-                </div>
-                <a class="inline-flex items-center justify-center gap-[10px] uppercase py-2.5 px-6 rounded-[4px] text-[0.875rem] tracking-[1px] text-white bg-accent-red border border-accent-red transition-all duration-300 no-underline cursor-pointer font-bold shadow-[0_4px_15px_var(--color-accent-red-glow)] hover:bg-[#c41111] hover:border-[#c41111] hover:shadow-[0_6px_20px_rgba(178,16,16,0.6)] active:scale-95 self-start" href="{{ $featured.RelPermalink }}">View Event Details</a>
+        <div class="bg-accent-tint border border-accent-dark rounded-xl mb-12 px-8 py-6 flex flex-col gap-4 relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:w-1 before:bg-accent-light before:z-10 before:h-full">
+            <div class="text-accent-light font-bold text-sm">{{ $featured.Date.Format "Monday 02 January 2006 @ 15:04" }}</div>
+            <h2 class="text-header !mt-0 !mb-0">{{ $featured.Title }}</h2>
+            <div class="text-body leading-6 line-clamp-3">
+                {{ $featured.Summary | plainify }}
             </div>
+            <a class="py-2.5 px-6 text-accent-text rounded-md bg-accent no-underline cursor-pointer font-bold hover:no-underline hover:text-accent-text hover:bg-accent-light active:scale-95 self-start" href="{{ $featured.RelPermalink }}">&gt; view event details</a>
         </div>
     {{ end }}
 
-    <div class="flex justify-between items-center mb-8">
-        <h1 class="m-0 relative after:content-[''] after:block after:absolute after:bottom-[-8px] after:left-0 after:w-[40px] after:h-[3px] after:bg-accent-red">Welcome to Stellar Vector</h1>
-    </div>
+    <h1 class="relative after:block after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Welcome to Stellar Vector</h1>
 
-    <div class="prose prose-invert prose-lg max-w-none text-text prose-a:text-accent-red prose-a:font-semibold prose-a:no-underline hover:prose-a:underline hover:prose-a:underline-dashed hover:prose-a:text-[#cc1212] transition-all">
+    <div class="prose prose-invert prose-lg max-w-none transition-all mt-8">
         {{ .Content }}
     </div>
 {{ end }}

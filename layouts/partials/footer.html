@@ -1,0 +1,26 @@
+<footer class="max-w-5xl mx-auto px-5 py-12 border-t border-dashed border-accent flex flex-col md:flex-row justify-between items-center gap-10 text-muted text-sm leading-[1.5]">
+    <div class="md:text-left text-center">
+        &copy; {{ .Site.Title }} {{ now.Year }}
+        <br>
+        A <a href="{{ .Site.Params.social.loko_link }}" class="inline-flex items-center opacity-100 hover:opacity-80 transition-all duration-300 no-underline">
+            <img src="/assets/images/icons/logo-loko.svg" alt="LOKO Logo" class="h-4 align-text-bottom light:invert-[0.9]">
+        </a> recognized association
+        <div class="mt-2.5 max-w-md">
+            Stellar Vector is powered by the <a href="https://distrinet.cs.kuleuven.be" class="text-accent-light font-bold transition-colors no-underline hover:underline hover:underline-dashed">DistriNet research group</a> and the <a href="https://kuleuven.be" class="text-accent-light font-semibold transition-colors no-underline hover:underline hover:underline-dashed">KU Leuven</a>.
+        </div>
+        <a href="https://find.stellarvector.be/?utm_source=stellarvector.be&utm_content=footer" class="social-hub-link inline-block mt-3 text-accent-light font-bold uppercase no-underline">&gt; find us online</a>
+    </div>
+    <div class="links flex flex-wrap gap-[15px] items-center justify-center md:justify-end">
+        {{ range $key, $val := .Site.Params.social }}
+            {{ if (and (strings.HasSuffix $key "_link") (not (in (slice "loko_link" "discord_invite_link" "mailing_list_url") $key))) }}
+                {{ $icon_name := index (split $key "_") 0 }}
+                <a href="{{ $val }}" class="opacity-50 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-300 grayscale invert-[0.2] hover:grayscale-0 hover:invert-0 flex items-center">
+                    <img src="/assets/images/icons/logo-{{ $icon_name }}.svg" alt="{{ $icon_name }} Logo" class="h-[30px] transition-all duration-300">
+                </a>
+            {{ end }}
+        {{ end }}
+        <a href="{{ .Site.Params.social.discord_invite_link }}" class="opacity-50 hover:opacity-100 hover:-translate-y-0.5 transition-all duration-300 grayscale invert-[0.2] hover:grayscale-0 hover:invert-0 flex items-center">
+            <img src="/assets/images/icons/logo-discord.svg" alt="Discord Logo" class="w-[30px] transition-all duration-300">
+        </a>
+    </div>
+</footer>

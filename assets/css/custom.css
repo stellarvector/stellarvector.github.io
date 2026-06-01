@@ -1,6 +1,4 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@source "hugo_stats.json";
+@custom-variant light (&:where(.light, .light *));
 
 @theme {
   --color-background: #050505;
@@ -25,10 +23,6 @@
     line-height: 1.6;
   }
 
-  h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
-  h2 { font-size: 1.8rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
-  h3 { font-size: 1.4rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-
   a {
     color: var(--color-accent-red);
     text-decoration: none;
@@ -40,6 +34,5 @@
   a:hover {
     color: #cc1212;
     text-decoration: underline dashed;
-    text-shadow: 0 0 8px var(--color-accent-red-glow);
   }
 }
