@@ -1,0 +1,19 @@
+{{- $sun := "w-5 h-5 shrink-0 block light:hidden" -}}
+{{- $moon := "w-5 h-5 shrink-0 hidden light:block" -}}
+
+{{ if .mobile }}
+    <button type="button" data-theme-toggle
+            class="font-mono w-full flex items-center gap-2 py-3 px-2 rounded-sm text-body hover:text-link cursor-pointer transition-colors duration-200"
+            aria-label="Switch theme" aria-pressed="false">
+        {{ partial "icon.html" (dict "name" "sun" "class" $sun) }}
+        {{ partial "icon.html" (dict "name" "moon" "class" $moon) }}
+        <span data-theme-label>theme</span>
+    </button>
+{{ else }}
+    <button type="button" data-theme-toggle
+            class="w-11 h-11 inline-flex items-center justify-center rounded-sm text-link hover:text-link-hover cursor-pointer transition-colors duration-200 hover:bg-accent-tint"
+            aria-label="Switch theme" aria-pressed="false">
+        {{ partial "icon.html" (dict "name" "sun" "class" $sun) }}
+        {{ partial "icon.html" (dict "name" "moon" "class" $moon) }}
+    </button>
+{{ end }}

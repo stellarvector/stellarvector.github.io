@@ -3,27 +3,68 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
 
-        {{ $themeCSS := resources.Get "css/main.css" }}
-        {{ $customCSS := resources.Get "css/custom.css" }}
-        {{ $opts := dict "minify" true }}
-        {{ $css := slice $themeCSS $customCSS | resources.Concat "css/bundle.css" | css.TailwindCSS $opts }}
+        {{ $title := .Site.Title }}
+        {{ if and (not .IsHome) .Title }}
+            {{ $title = printf "%s | %s" .Title .Site.Title }}
+        {{ end }}
+        {{ $desc := .Description | default .Site.Params.description }}
 
+        <title>{{ $title }}</title>
+        <meta name="description" content="{{ $desc }}">
+        <meta name="theme-color" content="#0a0505">
+        <meta property="og:title" content="{{ $title }}">
+        <meta property="og:description" content="{{ $desc }}">
+        <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+        <meta property="og:url" content="{{ .Permalink }}">
+        <meta property="og:image" content="{{ "assets/logo/square/logo-dark.png" | absURL }}">
+        <meta property="og:site_name" content="{{ .Site.Title }}">
+        <meta name="twitter:card" content="summary">
+        <link rel="canonical" href="{{ .Permalink }}">
+        {{ with .Site.Home.OutputFormats.Get "rss" }}
+            <link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+        {{ end }}
+
+        {{ $theme := resources.Get "css/main.css" | css.TailwindCSS (dict "minify" true) }}
+        {{ $local := resources.Get "css/overrides.css" | minify }}
+        {{ $css := slice $theme $local | resources.Concat "css/bundle.css" | fingerprint "sha256" }}
         <link rel="stylesheet" href="{{ $css.RelPermalink }}">
         <link rel="shortcut icon" href="/assets/logo/favicon.ico" type="image/x-icon">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        {{ range slice "space-grotesk-normal-400_700-latin" "ibm-plex-sans-normal-300_600-latin" "space-mono-normal-400-latin" }}
+            <link rel="preload" href="/fonts/{{ . }}.woff2" as="font" type="font/woff2" crossorigin>
+        {{ end }}
+
+        <script>
+            (function () {
+                try {
+                    var stored = localStorage.getItem("sv-theme");
+                    var light = stored ? stored === "light"
+                        : window.matchMedia("(prefers-color-scheme: light)").matches;
+                    if (light) document.documentElement.classList.add("light");
+                    var meta = document.querySelector('meta[name="theme-color"]');
+                    if (meta) meta.setAttribute("content", light ? "#fff9f9" : "#0a0505");
+                } catch (e) {}
+            })();
+        </script>
 
         <script defer src="https://go.stellarvector.be/go.js" data-website-id="2bfb19ad-e57e-4124-a51a-273cb690cedc" data-domains="stellarvector.be,www.stellarvector.be"></script>
     </head>
-    <body class="antialiased">
+    <body class="antialiased tracking-normal min-h-dvh flex flex-col">
+        <a href="#content"
+           class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-2000 focus:rounded-sm focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-accent-text focus:no-underline">
+            skip to content
+        </a>
+
         {{ partial "header.html" . }}
 
-        <main id="content" class="max-w-5xl mx-auto px-5 min-h-[calc(100vh-300px)] py-10">
+        <main id="content" tabindex="-1" class="max-w-5xl w-full mx-auto px-5 py-10 flex-1">
             {{ block "main" . }}{{ end }}
         </main>
 
         {{ partial "footer.html" . }}
+
+        {{ $js := resources.Get "js/site.js" | js.Build (dict "minify" true) | fingerprint "sha256" }}
+        <script defer src="{{ $js.RelPermalink }}"></script>
     </body>
 </html>

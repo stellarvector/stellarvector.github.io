@@ -1,10 +1,25 @@
+{{ $external := strings.HasPrefix .url "http" }}
 {{ $isActive := false }}
 
 {{ if eq .url "/" }}
     {{ $isActive = .page.IsHome }}
-{{ else }}
-    {{ $isActive = strings.Contains .page.RelPermalink .url }}
+{{ else if not $external }}
+    {{ $isActive = strings.HasPrefix .page.RelPermalink (printf "%s/" (strings.TrimSuffix "/" .url)) }}
 {{ end }}
 
-<a class="btn font-bold py-3 px-5 text-accent-light after:transition-all after:duration-300 relative after:block after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-accent-light after:rounded-full after:shadow-md hover:after:w-[70%] {{ if $isActive }}after:w-[70%]{{ end }}"
-    href="{{ .url }}">{{ .text }}</a>
+{{ $shape := cond .mobile
+    "flex py-3 px-2 rounded-sm"
+    "text-sm h-11 inline-flex px-3 border-b-2" }}
+
+{{ $state := "" }}
+{{ if .mobile }}
+    {{ $state = cond $isActive "bg-accent-tint text-heading" "text-body hover:text-link" }}
+{{ else }}
+    {{ $state = cond $isActive "border-accent text-heading" "border-transparent text-muted hover:border-line-strong hover:text-link" }}
+{{ end }}
+
+<a class="font-mono items-center gap-1.5 no-underline hover:no-underline {{ $shape }} {{ $state }}"
+   href="{{ .url }}"{{ if $isActive }} aria-current="page"{{ end }}{{ if $external }} target="_blank" rel="noopener"{{ end }}>
+    {{ .text }}
+    {{- if $external }}{{ partial "external-mark.html" . }}{{ end }}
+</a>

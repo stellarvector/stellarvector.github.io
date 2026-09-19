@@ -1,5 +1,6 @@
 ---
 layout: event
+event_type: workshop
 title: HTB BE Meetup
 date: 2024-05-02T19:00:00+02:00
 signup: https://www.meetup.com/meetup-group-belgium/events/300284400/

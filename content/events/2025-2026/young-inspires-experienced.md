@@ -1,5 +1,6 @@
 ---
 layout: event
+event_type: talk
 title: ie-net's Young Inspires Experienced Cybersecurity Edition
 date: 2025-09-30T20:00:00+01:00
 signup: https://www.ie-net.be/civicrm/event/register?id=3918&reset=1

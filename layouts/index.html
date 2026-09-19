@@ -1,22 +1,62 @@
 {{ define "main" }}
-    {{ $upcoming := where .Site.RegularPages "Section" "events" }}
-    {{ $upcoming = where $upcoming "Date" "ge" now }}
-    {{ if $upcoming }}
-        {{ $featured := index $upcoming.Reverse 0 }}
-        <div class="bg-accent-tint border border-accent-dark rounded-xl mb-12 px-8 py-6 flex flex-col gap-4 relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:w-1 before:bg-accent-light before:z-10 before:h-full">
-            <div class="text-accent-light font-bold text-sm">{{ $featured.Date.Format "Monday 02 January 2006 @ 15:04" }}</div>
-            <h2 class="text-header !mt-0 !mb-0">{{ $featured.Title }}</h2>
-            <div class="text-body leading-6 line-clamp-3">
-                {{ $featured.Summary | plainify }}
-            </div>
-            <a class="py-2.5 px-6 text-accent-text rounded-md bg-accent no-underline cursor-pointer font-bold hover:no-underline hover:text-accent-text hover:bg-accent-light active:scale-95 self-start" href="{{ $featured.RelPermalink }}">&gt; view event details</a>
+    {{ $events := partial "events.html" . }}
+
+    <section class="-mx-5 px-5 py-10 sm:py-14 mb-12 border-y border-line">
+        {{ partial "command.html" (dict "text" "whoami" "class" "mb-3") }}
+
+        <h1 class="sv-marker !mt-0 !mb-4"><span class="sv-glitch" data-text="{{ .Site.Title }}">{{ .Site.Title }}</span></h1>
+
+        <p class="grid font-mono text-sm sm:text-base md:text-lg text-body">
+            <span class="col-start-1 row-start-1 sv-caret invisible" aria-hidden="true">{{ .Params.tagline }}</span>
+            <span class="col-start-1 row-start-1 sv-caret" data-typed>{{ .Params.tagline }}</span>
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            {{ partial "button.html" (dict "url" "/launchpad" "text" "join the team") }}
+            {{ partial "button.html" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
         </div>
+    </section>
+
+    {{ with $events.upcoming }}
+        <section class="mb-16" aria-labelledby="next-event">
+            <h2 id="next-event" class="mb-6">Next up</h2>
+            {{ partial "event-card.html" (dict "page" (index . 0) "featured" true) }}
+        </section>
     {{ end }}
 
-    <h1 class="relative after:block after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-accent after:rounded-full">Welcome to Stellar Vector</h1>
+    <section class="mb-16" aria-labelledby="what-we-do">
+        <h2 id="what-we-do" class="mb-6">Hack, learn, repeat</h2>
 
-    <div class="prose prose-invert prose-lg max-w-none transition-all mt-8">
-        {{ .Content }}
-    </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {{ range .Site.Params.homepage_cards }}
+                <div class="sv-terminal sv-scanlines">
+                    {{ partial "terminal-title.html" .title }}
+                    <p>{{ .body }}</p>
+                </div>
+            {{ end }}
+        </div>
+    </section>
+
+    <section class="mb-16" aria-labelledby="about-us">
+        <h2 id="about-us" class="mb-4">Who we are</h2>
+
+        <div class="max-w-2xl">
+            <div class="prose prose-lg max-w-none">
+                {{ .Content }}
+            </div>
+
+            {{ partial "button.html" (dict "url" "/about" "text" "read the full story" "variant" "ghost" "class" "mt-6") }}
+        </div>
+    </section>
+
+    <section aria-labelledby="find-us">
+        <h2 id="find-us" class="mb-6">Get involved</h2>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+            {{ partial "quick-link.html" (dict "icon" "discord" "title" "Discord" "body" "Challenge talk, team coordination, memes." "url" .Site.Params.social.discord_invite_link) }}
+            {{ partial "quick-link.html" (dict "logo" true "title" "Writeups" "body" "How we solved it, written up in detail on our blog." "url" "https://blog.stellarvector.be/?utm_source=stellarvector.be&utm_content=homepage") }}
+            {{ partial "quick-link.html" (dict "icon" "ctftime" "title" "CTFtime" "body" "Our competition history and current ranking." "url" .Site.Params.social.ctftime_team_link) }}
+            {{ partial "quick-link.html" (dict "icon" "htb" "title" "Hack The Box" "body" "Train with the team on HTB all year round." "url" .Site.Params.social.htb_team_link) }}
+        </div>
+    </section>
 {{ end }}
-

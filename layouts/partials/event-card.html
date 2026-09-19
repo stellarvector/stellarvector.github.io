@@ -1,0 +1,35 @@
+{{ $page := .page }}
+{{ $featured := .featured | default false }}
+{{ $state := partial "event-state.html" $page }}
+{{ $isPast := eq $state "past" }}
+
+<a href="{{ $page.RelPermalink }}"
+   class="group flex flex-col items-start gap-3 p-5 rounded-md no-underline hover:no-underline transition-colors duration-200 active:border-accent
+          {{ if $isPast }}bg-card border border-line hover:border-line-strong{{ else }}bg-accent-tint border border-accent-dark border-l-4 border-l-accent-light hover:border-accent{{ end }}">
+
+    <div class="flex flex-wrap items-center gap-2">
+        <time class="font-mono text-sm font-bold {{ if $isPast }}text-muted{{ else }}text-link{{ end }}"
+              datetime="{{ $page.Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ $page.Date.Format "Mon 02 Jan 2006 @ 15:04" }}
+        </time>
+
+        {{ if eq $state "today" }}
+            {{ partial "tag.html" (dict "text" "happening today" "variant" "accent") }}
+        {{ end }}
+
+        {{ with $page.Params.event_type }}
+            {{ partial "tag.html" (dict "text" .) }}
+        {{ end }}
+    </div>
+
+    <h3 class="!mt-0 !mb-0 !text-xl leading-snug text-balance text-heading group-hover:text-link transition-colors duration-200">{{ $page.Title }}</h3>
+
+    {{ if $featured }}
+        <p class="font-sans text-body line-clamp-3">{{ $page.Summary | plainify }}</p>
+    {{ end }}
+
+    <span class="font-mono text-sm mt-auto pt-1 {{ if $featured }}font-bold {{ end }}text-link group-hover:text-link-hover">
+        <span class="text-terminal">&gt;</span>
+        {{ if $featured }}event details{{ else }}more info{{ end }}
+    </span>
+</a>

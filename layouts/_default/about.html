@@ -1,0 +1,18 @@
+{{ define "main" }}
+    {{ partial "page-heading.html" (dict "label" "cat /about" "title" .Title) }}
+
+    <div class="mt-8 grid gap-10 lg:gap-x-12 lg:grid-cols-[minmax(0,42rem)_minmax(0,1fr)]">
+        <div class="prose prose-lg max-w-none">
+            {{ .Content }}
+        </div>
+
+        <aside aria-label="Team history">
+            {{ partial "timeline.html" . }}
+        </aside>
+    </div>
+
+    <div class="mt-12 flex flex-col sm:flex-row gap-3">
+        {{ partial "button.html" (dict "url" "/launchpad" "text" "join the team") }}
+        {{ partial "button.html" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
+    </div>
+{{ end }}

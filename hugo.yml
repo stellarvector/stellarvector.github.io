@@ -22,12 +22,61 @@ markup:
       unsafe: true
 
 params:
-  email: "team@stellarvector.be"
+  email: "hey@stellarvector.be"
   description: "Stellar Vector is the academic CTF team of the KU Leuven in Belgium."
   version: "2026.06.01"
 
   TailwindCSS:
     enable: true
+
+  homepage_cards:
+    - title: "ctf.sh"
+      body: "We play CTFs together roughly every month. Bring a laptop and curiosity."
+    - title: "workshops.sh"
+      body: "Hands-on sessions like CTF101, PWN101 and HWSec101 that take you from zero to exploiting real bugs."
+    - title: "community.sh"
+      body: "Students, PhDs, alumni and hobbyists from all over Belgium. All skill levels, no gatekeeping."
+
+  # Shown in the gutter on /about and the homepage. `year` is optional and
+  # omitted here because the real dates are not in the repo yet -- add them
+  # and they render automatically.
+  about_timeline:
+    - label: "The Electronic Mayhem"
+      note: "The team's earliest name, retired long ago."
+
+    - label: "HacknamStyle"
+      note: "A reboot of The Electronic Mayhem, and the name the team carried for years."
+
+    - label: "Stellar Vector"
+      note: "The current reboot, associated with KU Leuven and powered by DistriNet."
+
+    - label: "Today"
+      note: "Monthly CTFs, hands-on workshops, and anyone who wants to join can."
+
+  launchpad_steps:
+    - title: "join the discord"
+      script: "init.sh"
+      done: true
+      body: "Discord is where we talk, share challenges and coordinate. It's the best way to meet everyone!"
+      action: "join"
+      icon: "discord"
+      url: "https://discord.gg/tbP75TNfNR"
+
+    - title: "meet us on campus"
+      script: "meetup.sh"
+      done: false
+      tag: "coming soon"
+      body: "We're starting on-campus meetups soon on the Arenberg campus! These sessions will be the best way to get to know each other. We'll use them to train our hacking-muscles and share cool findings in a lab environment."
+
+    - title: "solve a challenge"
+      script: "hack.sh"
+      done: false
+      tag: "optional"
+      body: "There is a quick intro challenge hidden somewhere on this page. Solve it and submit the answer to earn your first points on our platform."
+      action: "go to play"
+      url: "https://play.stellarvector.be/?utm_source=stellarvector.be&utm_content=launchpad"
+      # Rendered into the DOM but not shown. This is the challenge.
+      hidden: "Welcome hacker! Someone left something here for you, but it is unreadable. If you manage to correctly descramble the message, you'll see what we call a 'flag' of the format 'sv{...}'. That is your prize, your proof of correct work! It's what you submit at play.stellarvector.be to get your first points. Good luck :) - c3Z7dzNsY29tZV90MF9zdGVsbGFyX3ZlY3Rvcl9oNHgwciEhfQ=="
 
   social:
     github_link: "https://www.github.com/stellarvector"
@@ -45,3 +94,15 @@ params:
     embed_url: "https://calendar.google.com/calendar/embed?src=kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com&ctz=Europe%2FBrussels"
     add_link: "https://calendar.google.com/calendar/u/0?cid=a2NidDNxNzVhNGZ2ZWw1N3MwNThmZXQ5N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
     ical_address: "https://calendar.google.com/calendar/ical/kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com/public/basic.ics"
+
+# Hugo 0.165 does not ship tailwindcss in its default exec allowlist, so a
+# local `hugo server` refuses to run it. CI is unaffected by this block.
+security:
+  exec:
+    allow:
+      - "^(dart-)?sass$"
+      - "^go$"
+      - "^git$"
+      - "^node$"
+      - "^postcss$"
+      - "^tailwindcss$"

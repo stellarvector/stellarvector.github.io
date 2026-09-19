@@ -1,0 +1,14 @@
+{{- $upcoming := slice -}}
+{{- $past := slice -}}
+
+{{- range where .Site.RegularPages "Section" "events" -}}
+    {{- if eq (partial "event-state.html" .) "past" -}}
+        {{- $past = $past | append . -}}
+    {{- else -}}
+        {{- $upcoming = $upcoming | append . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- return dict
+    "upcoming" (sort $upcoming "Date")
+    "past" (sort $past "Date" "desc") -}}

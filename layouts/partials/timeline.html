@@ -1,0 +1,13 @@
+<div class="sv-terminal sv-scanlines">
+    {{ partial "terminal-title.html" "git log --reverse" }}
+    <ol>
+        {{ range .Site.Params.about_timeline }}
+            <li class="relative border-l border-line-strong pl-4 pb-5 last:pb-0">
+                <span aria-hidden="true" class="absolute -left-[3.5px] top-2 w-1.5 h-1.5 rounded-full bg-accent-light"></span>
+                {{ with .year }}<p class="sv-label">{{ . }}</p>{{ end }}
+                <p class="font-mono font-bold text-heading">{{ .label }}</p>
+                <p class="font-sans text-sm text-muted leading-relaxed mt-1">{{ .note }}</p>
+            </li>
+        {{ end }}
+    </ol>
+</div>

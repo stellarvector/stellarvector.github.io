@@ -1,5 +1,6 @@
 ---
 layout: event
+event_type: workshop
 title: HWSec101
 date: 2025-04-23T20:00:00+01:00
 signup: https://forms.gle/Qr5AFdBnYqDKVPDV8

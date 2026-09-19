@@ -1,9 +1,31 @@
 {{ define "main" }}
-    <div class="flex justify-between items-center mb-8">
-        <h1 class="m-0 relative after:content-[''] after:block after:absolute after:bottom-[-8px] after:left-0 after:width-[40px] after:height-[3px] after:bg-accent-red">{{ .Title }}</h1>
+    {{ partial "button.html" (dict "url" "/events" "text" "back to events" "variant" "ghost" "size" "sm") }}
+
+    <div class="mt-2">
+        {{ partial "command.html" (dict "text" (printf "cat %s" (strings.TrimSuffix "/" .RelPermalink)) "class" "mb-3") }}
+        <h1 class="sv-marker !mt-0">{{ .Title }}</h1>
     </div>
 
-    <div class="prose prose-invert prose-lg max-w-none text-text">
-        {{ .Content }}
+    <div class="mt-8 grid gap-8 lg:gap-x-12 lg:grid-cols-[minmax(0,42rem)_minmax(0,1fr)]">
+        <aside class="lg:col-start-2 lg:row-start-1" aria-label="Event details">
+            {{ partial "event-facts.html" . }}
+        </aside>
+
+        <div class="lg:col-start-1 lg:row-start-1">
+            {{ if eq (partial "event-state.html" .) "past" }}
+                <p class="mb-8 font-mono text-sm text-muted border-l-2 border-line-strong pl-4">
+                    This event has already taken place. Check <a href="/events">upcoming events</a> or our <a href="/calendar">CTF calendar</a> for what is next.
+                </p>
+            {{ end }}
+
+            <div class="prose prose-lg max-w-none">
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-line flex flex-col sm:flex-row gap-3">
+        {{ partial "button.html" (dict "url" "/events" "text" "back to events" "variant" "outline") }}
+        {{ partial "button.html" (dict "url" "/launchpad" "text" "join the team") }}
     </div>
 {{ end }}

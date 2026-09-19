@@ -1,0 +1,6 @@
+b,
+strong,
+.prose :where(b),
+.prose :where(strong) {
+    letter-spacing: inherit;
+}

@@ -1,0 +1,5 @@
+{{- $variants := dict "accent" "sv-tag-accent" "solved" "sv-tag-solved" "failed" "sv-tag-failed" -}}
+<span class="sv-tag tracking-wide{{ with .variant }} {{ index $variants . }}{{ end }}{{ with .class }} {{ . }}{{ end }}">
+    {{- with .icon }}{{ partial "icon.html" (dict "name" . "class" "h-3.5 w-3.5 shrink-0") }}{{ end -}}
+    {{- with .html }}{{ . }}{{ else }}{{ .text }}{{ end -}}
+</span>
