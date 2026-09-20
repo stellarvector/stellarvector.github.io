@@ -66,10 +66,16 @@ jobs:
 
       # baseURL comes from the site config, never from the Pages output: the
       # config is the one place the domain is written down.
+      # We run Hugo twice: once to generate hugo_stats.json, and once to build
+      # the final assets using those stats. This ensures Tailwind v4 doesn't
+      # purge classes used in templates.
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
-        run: hugo --gc --minify
+          HUGO_ENV: production
+        run: |
+          hugo --gc --ignoreCache --cleanDestinationDir
+          hugo --gc --minify --ignoreCache --cleanDestinationDir
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

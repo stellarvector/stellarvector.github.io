@@ -2,30 +2,30 @@
 {{ $isPast := eq $state "past" }}
 
 <div class="sv-terminal sv-scanlines lg:sticky lg:top-24">
-    {{ partial "terminal-title.html" "tldr.sh" }}
+    {{ partial "sv/terminal-title" "tldr.sh" }}
     <dl class="grid gap-4">
         <div>
             <dt class="sv-label mb-1.5">status</dt>
             <dd>
                 {{ if $isPast }}
-                    {{ partial "tag.html" (dict "text" "past") }}
+                    {{ partial "sv/tag" (dict "text" "past") }}
                 {{ else if eq $state "today" }}
-                    {{ partial "tag.html" (dict "text" "happening today" "variant" "accent") }}
+                    {{ partial "sv/tag" (dict "text" "happening today" "variant" "accent") }}
                 {{ else }}
-                    {{ partial "tag.html" (dict "text" "upcoming" "variant" "accent") }}
+                    {{ partial "sv/tag" (dict "text" "upcoming" "variant" "accent") }}
                 {{ end }}
             </dd>
         </div>
 
         <div>
             <dt class="sv-label mb-1.5 flex items-center gap-1.5">
-                {{ partial "icon.html" (dict "name" "calendar" "class" "w-3.5 h-3.5 shrink-0") }}
+                {{ partial "sv/icon" (dict "name" "calendar" "class" "w-3.5 h-3.5 shrink-0") }}
                 when
             </dt>
             <dd class="font-mono text-sm text-body">
                 <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "Mon 02 Jan 2006" }}</time>
                 <span class="flex items-center gap-1.5 mt-1 text-muted">
-                    {{ partial "icon.html" (dict "name" "clock" "class" "w-3.5 h-3.5 shrink-0") }}
+                    {{ partial "sv/icon" (dict "name" "clock" "class" "w-3.5 h-3.5 shrink-0") }}
                     {{ .Date.Format "15:04" }}
                 </span>
             </dd>
@@ -34,7 +34,7 @@
         {{ with .Params.location }}
             <div>
                 <dt class="sv-label mb-1.5 flex items-center gap-1.5">
-                    {{ partial "icon.html" (dict "name" "pin" "class" "w-3.5 h-3.5 shrink-0") }}
+                    {{ partial "sv/icon" (dict "name" "pin" "class" "w-3.5 h-3.5 shrink-0") }}
                     where
                 </dt>
                 <dd class="font-mono text-sm text-body">{{ . }}</dd>
@@ -44,7 +44,7 @@
         {{ with .Params.event_type }}
             <div>
                 <dt class="sv-label mb-1.5">type</dt>
-                <dd>{{ partial "tag.html" (dict "text" .) }}</dd>
+                <dd>{{ partial "sv/tag" (dict "text" .) }}</dd>
             </div>
         {{ end }}
 
@@ -55,11 +55,11 @@
         {{ $end := (.Date.Add (duration "hour" 3)).UTC.Format "20060102T150405Z" }}
         {{ $gcal := printf "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%s&dates=%s/%s&details=%s" (.Title | urlquery) $start $end (.Permalink | urlquery) }}
 
-        <div class="flex flex-col gap-2 border-t border-line-strong">
+        <div class="flex flex-col gap-2 border-t border-line-strong pt-4">
             {{ with .Params.signup }}
-                {{ partial "button.html" (dict "url" . "text" "sign up" "size" "sm" "external" true) }}
+                {{ partial "sv/button" (dict "url" . "text" "sign up" "size" "sm" "external" true) }}
             {{ end }}
-            {{ partial "button.html" (dict "url" $gcal "text" "add to calendar" "variant" "outline" "size" "sm" "external" true) }}
+            {{ partial "sv/button" (dict "url" $gcal "text" "add to calendar" "variant" "outline" "size" "sm" "external" true) }}
         </div>
     {{ end }}
 </div>

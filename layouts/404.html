@@ -1,7 +1,8 @@
 {{ define "main" }}
+<div class="max-w-5xl mx-auto px-5 py-10">
     <div class="py-8 sm:py-16 max-w-xl mx-auto">
         <div class="sv-terminal sv-scanlines">
-            {{ partial "terminal-title.html" "page not found" }}
+            {{ partial "sv/terminal-title" "page not found" }}
             <div class="font-mono">
                 <p class="sv-prompt text-heading break-all">cat <span data-requested-path>/the-page-you-wanted</span></p>
                 <p class="mt-2 text-error-text">cat: No such file or directory</p>
@@ -14,8 +15,9 @@
         </div>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            {{ partial "button.html" (dict "url" "/" "text" "go to homepage") }}
-            {{ partial "button.html" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
+            {{ partial "sv/button" (dict "url" "/" "text" "go to homepage") }}
+            {{ partial "sv/button" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
         </div>
     </div>
+</div>
 {{ end }}

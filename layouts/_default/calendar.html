@@ -1,35 +1,37 @@
 {{ define "main" }}
-{{ partial "page-heading.html" (dict "label" "crontab -l" "title" .Title) }}
+<div class="max-w-5xl mx-auto px-5 py-10">
+    {{ partial "sv/page-heading" (dict "label" "crontab -l" "title" .Title) }}
 
-<div class="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
-    <p class="max-w-2xl text-body leading-relaxed">
-        Our upcoming competitions, training sessions and team meetings.
-        Sync the schedule with your own calendar so you never miss one.
+    <div class="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <p class="max-w-2xl text-body leading-relaxed">
+            Our upcoming competitions, training sessions and team meetings.
+            Sync the schedule with your own calendar so you never miss one.
+        </p>
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:justify-end shrink-0">
+            {{ partial "sv/button" (dict "url" .Site.Params.calendar.add_link "text" "add to google calendar" "external" true) }}
+            {{ partial "sv/button" (dict "url" .Site.Params.calendar.ical_address "text" "iCal feed" "variant" "outline" "external" true) }}
+        </div>
+    </div>
+
+    <p class="mt-8 font-mono text-sm text-muted">
+        Calendar not loading? <a href="{{ .Site.Params.calendar.add_link }}" target="_blank" rel="noopener">Open it directly in Google Calendar</a>.
     </p>
-    <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:justify-end shrink-0">
-        {{ partial "button.html" (dict "url" .Site.Params.calendar.add_link "text" "add to google calendar" "external" true) }}
-        {{ partial "button.html" (dict "url" .Site.Params.calendar.ical_address "text" "iCal feed" "variant" "outline" "external" true) }}
+
+    <div class="w-full mt-4 sv-terminal">
+        {{ partial "sv/terminal-title" "google calendar" }}
+        <div class="p-0">
+            <iframe id="calendar"
+                    title="Stellar Vector CTF calendar"
+                    src="{{ .Site.Params.calendar.embed_url }}"
+                    data-embed-url="{{ .Site.Params.calendar.embed_url }}"
+                    class="w-full h-[70dvh] min-h-[420px] max-h-[700px] block invert hue-rotate-180 light:invert-0 light:hue-rotate-0"
+                    loading="lazy" frameborder="0"></iframe>
+        </div>
     </div>
-</div>
 
-<p class="mt-8 font-mono text-sm text-muted">
-    Calendar not loading? <a href="{{ .Site.Params.calendar.add_link }}" target="_blank" rel="noopener">Open it directly in Google Calendar</a>.
-</p>
-
-<div class="w-full mt-4 sv-terminal">
-    {{ partial "terminal-title.html" "google calendar" }}
-    <div class="p-0">
-        <iframe id="calendar"
-                title="Stellar Vector CTF calendar"
-                src="{{ .Site.Params.calendar.embed_url }}"
-                data-embed-url="{{ .Site.Params.calendar.embed_url }}"
-                class="w-full h-[70dvh] min-h-[420px] max-h-[700px] block invert hue-rotate-180 light:invert-0 light:hue-rotate-0"
-                loading="lazy" frameborder="0"></iframe>
+    <div class="mt-12 flex flex-col sm:flex-row gap-3">
+        {{ partial "sv/button" (dict "url" "/launchpad" "text" "join the team") }}
+        {{ partial "sv/button" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
     </div>
-</div>
-
-<div class="mt-12 flex flex-col sm:flex-row gap-3">
-    {{ partial "button.html" (dict "url" "/launchpad" "text" "join the team") }}
-    {{ partial "button.html" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
 </div>
 {{ end }}

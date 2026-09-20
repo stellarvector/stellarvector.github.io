@@ -1,8 +1,9 @@
 {{ define "main" }}
-    {{ partial "button.html" (dict "url" "/events" "text" "back to events" "variant" "ghost" "size" "sm") }}
+<div class="max-w-5xl mx-auto px-5 py-10">
+    {{ partial "sv/button" (dict "url" "/events" "text" "back to events" "variant" "ghost" "size" "sm") }}
 
     <div class="mt-2">
-        {{ partial "command.html" (dict "text" (printf "cat %s" (strings.TrimSuffix "/" .RelPermalink)) "class" "mb-3") }}
+        {{ partial "sv/command" (dict "text" (printf "cat %s" (strings.TrimSuffix "/" .RelPermalink)) "class" "mb-3") }}
         <h1 class="sv-marker !mt-0">{{ .Title }}</h1>
     </div>
 
@@ -25,7 +26,8 @@
     </div>
 
     <div class="mt-12 pt-8 border-t border-line flex flex-col sm:flex-row gap-3">
-        {{ partial "button.html" (dict "url" "/events" "text" "back to events" "variant" "outline") }}
-        {{ partial "button.html" (dict "url" "/launchpad" "text" "join the team") }}
+        {{ partial "sv/button" (dict "url" "/events" "text" "back to events" "variant" "outline") }}
+        {{ partial "sv/button" (dict "url" "/launchpad" "text" "join the team") }}
     </div>
+</div>
 {{ end }}

@@ -1,6 +1,0 @@
-{{- $class := .class | default "h-5 w-auto" -}}
-{{- with resources.Get (printf "icons/%s.svg" .name) -}}
-    {{- .Content | replaceRE `^<svg` (printf `<svg class=%q` $class) | safeHTML -}}
-{{- else -}}
-    {{- errorf "partial icon.html: no such icon %q in assets/icons" .name -}}
-{{- end -}}

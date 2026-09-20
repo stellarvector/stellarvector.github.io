@@ -14,11 +14,11 @@
         </time>
 
         {{ if eq $state "today" }}
-            {{ partial "tag.html" (dict "text" "happening today" "variant" "accent") }}
+            {{ partial "sv/tag" (dict "text" "happening today" "variant" "accent") }}
         {{ end }}
 
         {{ with $page.Params.event_type }}
-            {{ partial "tag.html" (dict "text" .) }}
+            {{ partial "sv/tag" (dict "text" .) }}
         {{ end }}
     </div>
 

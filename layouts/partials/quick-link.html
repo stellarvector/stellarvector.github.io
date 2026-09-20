@@ -3,16 +3,16 @@
 <a href="{{ .url }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}
    class="group flex items-start gap-4 p-5 rounded-md bg-card border border-line-strong no-underline hover:no-underline hover:border-accent active:border-accent transition-colors duration-200">
     {{ if .logo }}
-        <img src="/assets/logo/square/star.png" alt="" aria-hidden="true" width="28" height="28" class="h-7 w-7 shrink-0 mt-0.5">
+        <img src="{{ site.Params.logo.star | relURL }}" alt="" aria-hidden="true" width="28" height="28" class="h-7 w-7 shrink-0 mt-0.5">
     {{ else }}
         <span class="shrink-0 mt-0.5 text-muted group-hover:text-link transition-colors duration-200">
-            {{ partial "icon.html" (dict "name" .icon "class" "h-7 w-7") }}
+            {{ partial "sv/icon" (dict "name" .icon "class" "h-7 w-7") }}
         </span>
     {{ end }}
     <span class="min-w-0">
         <span class="block font-mono font-bold text-heading group-hover:text-link transition-colors duration-200">
             {{ .title }}
-            {{- if $external }}{{ partial "external-mark.html" . }}{{ end }}
+            {{- if $external }}{{ partial "sv/external-mark" . }}{{ end }}
         </span>
         <span class="block text-sm text-muted leading-relaxed mt-1">{{ .body }}</span>
     </span>

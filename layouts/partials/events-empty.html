@@ -1,5 +1,5 @@
 <div class="sv-terminal sv-scanlines">
-    {{ partial "terminal-title.html" "no scheduled events" }}
+    {{ partial "sv/terminal-title" "no scheduled events" }}
     <p class="text-muted leading-relaxed">
         We have no upcoming events planned for now. We announce events a few weeks ahead.<br>
         The <a href="/calendar">CTF calendar</a> shows which competitions we are playing in the meantime,
@@ -7,6 +7,6 @@
     </p>
 </div>
 <div class="mt-6 flex flex-col sm:flex-row gap-3">
-    {{ partial "button.html" (dict "url" .Site.Params.social.discord_invite_link "text" "join the discord" "icon" "discord" "external" true) }}
-    {{ partial "button.html" (dict "url" "/calendar" "text" "see the ctf calendar" "variant" "outline") }}
+    {{ partial "sv/button" (dict "url" .Site.Params.social.discord "text" "join the discord" "icon" "discord" "external" true) }}
+    {{ partial "sv/button" (dict "url" "/calendar" "text" "see the ctf calendar" "variant" "outline") }}
 </div>

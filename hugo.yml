@@ -5,6 +5,7 @@ locale: "en"
 build:
   buildStats:
     enable: true
+  writeStats: true
 
 buildFuture: true
 
@@ -15,6 +16,17 @@ disableKinds:
 module:
   imports:
     - path: "github.com/stellarvector/theme"
+  mounts:
+    - source: assets
+      target: assets
+    - source: content
+      target: content
+    - source: layouts
+      target: layouts
+    - source: static
+      target: static
+    - source: hugo_stats.json
+      target: assets/css/hugo_stats.json
 
 markup:
   goldmark:
@@ -23,11 +35,17 @@ markup:
 
 params:
   email: "hey@stellarvector.be"
-  description: "Stellar Vector is the academic CTF team of the KU Leuven in Belgium."
+  description: "Stellar Vector is the academic CTF team of KU Leuven. We play CTFs monthly, run hands-on hacking workshops, and welcome anyone in Belgium regardless of skill level."
   version: "2026.06.01"
-
-  TailwindCSS:
-    enable: true
+  host: "www"
+  measure: "5xl"
+  analytics:
+    website_id: "2bfb19ad-e57e-4124-a51a-273cb690cedc"
+    domains: "stellarvector.be,www.stellarvector.be"
+  css:
+    extra: ["css/overrides.css"]
+  js:
+    extra: ["js/site.js"]
 
   homepage_cards:
     - title: "ctf.sh"
@@ -37,19 +55,13 @@ params:
     - title: "community.sh"
       body: "Students, PhDs, alumni and hobbyists from all over Belgium. All skill levels, no gatekeeping."
 
-  # Shown in the gutter on /about and the homepage. `year` is optional and
-  # omitted here because the real dates are not in the repo yet -- add them
-  # and they render automatically.
   about_timeline:
     - label: "The Electronic Mayhem"
       note: "The team's earliest name, retired long ago."
-
     - label: "HacknamStyle"
       note: "A reboot of The Electronic Mayhem, and the name the team carried for years."
-
     - label: "Stellar Vector"
       note: "The current reboot, associated with KU Leuven and powered by DistriNet."
-
     - label: "Today"
       note: "Monthly CTFs, hands-on workshops, and anyone who wants to join can."
 
@@ -61,13 +73,11 @@ params:
       action: "join"
       icon: "discord"
       url: "https://discord.gg/tbP75TNfNR"
-
     - title: "meet us on campus"
       script: "meetup.sh"
       done: false
       tag: "coming soon"
       body: "We're starting on-campus meetups soon on the Arenberg campus! These sessions will be the best way to get to know each other. We'll use them to train our hacking-muscles and share cool findings in a lab environment."
-
     - title: "solve a challenge"
       script: "hack.sh"
       done: false
@@ -75,28 +85,31 @@ params:
       body: "There is a quick intro challenge hidden somewhere on this page. Solve it and submit the answer to earn your first points on our platform."
       action: "go to play"
       url: "https://play.stellarvector.be/?utm_source=stellarvector.be&utm_content=launchpad"
-      # Rendered into the DOM but not shown. This is the challenge.
       hidden: "Welcome hacker! Someone left something here for you, but it is unreadable. If you manage to correctly descramble the message, you'll see what we call a 'flag' of the format 'sv{...}'. That is your prize, your proof of correct work! It's what you submit at play.stellarvector.be to get your first points. Good luck :) - c3Z7dzNsY29tZV90MF9zdGVsbGFyX3ZlY3Rvcl9oNHgwciEhfQ=="
-
-  social:
-    github_link: "https://www.github.com/stellarvector"
-    htb_team_link: "https://app.hackthebox.com/teams/overview/4886"
-    ctftime_team_link: "https://www.ctftime.org/team/192988"
-    discord_invite_link: "https://discord.gg/tbP75TNfNR"
-    mailing_list_url: "https://groups.google.com/a/stellarvector.be/g/ctf"
-    linkedin_page_link: "https://www.linkedin.com/company/stellarvector/"
-    x_page_link: "https://x.com/stellar_vector"
-    facebook_page_link: "https://www.facebook.com/stellarvector.be"
-    instagram_page_link: "https://www.instagram.com/stellar.vector"
-    loko_link: "https://www.loko.be/en/societies#:~:text=Stellar%20Vector,Visit%20website"
 
   calendar:
     embed_url: "https://calendar.google.com/calendar/embed?src=kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com&ctz=Europe%2FBrussels"
     add_link: "https://calendar.google.com/calendar/u/0?cid=a2NidDNxNzVhNGZ2ZWw1N3MwNThmZXQ5N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
     ical_address: "https://calendar.google.com/calendar/ical/kcbt3q75a4fvel57s058fet97s%40group.calendar.google.com/public/basic.ics"
 
-# Hugo 0.165 does not ship tailwindcss in its default exec allowlist, so a
-# local `hugo server` refuses to run it. CI is unaffected by this block.
+menu:
+  main:
+    - name: "home"
+      url: "/"
+      weight: 1
+    - name: "about"
+      url: "/about"
+      weight: 2
+    - name: "events"
+      url: "/events"
+      weight: 3
+    - name: "calendar"
+      url: "/calendar"
+      weight: 4
+    - name: "blog"
+      url: "https://blog.stellarvector.be/?utm_source=stellarvector.be&utm_content=navbar"
+      weight: 5
+
 security:
   exec:
     allow:

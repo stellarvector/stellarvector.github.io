@@ -1,5 +1,5 @@
 <div class="sv-terminal sv-scanlines">
-    {{ partial "terminal-title.html" "git log --reverse" }}
+    {{ partial "sv/terminal-title" "git log --reverse" }}
     <ol>
         {{ range .Site.Params.about_timeline }}
             <li class="relative border-l border-line-strong pl-4 pb-5 last:pb-0">

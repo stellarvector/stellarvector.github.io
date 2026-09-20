@@ -1,5 +1,6 @@
 {{ define "main" }}
-    {{ partial "page-heading.html" (dict "label" "cat /about" "title" .Title) }}
+<div class="max-w-5xl mx-auto px-5 py-10">
+    {{ partial "sv/page-heading" (dict "label" "cat /about" "title" .Title) }}
 
     <div class="mt-8 grid gap-10 lg:gap-x-12 lg:grid-cols-[minmax(0,42rem)_minmax(0,1fr)]">
         <div class="prose prose-lg max-w-none">
@@ -12,7 +13,8 @@
     </div>
 
     <div class="mt-12 flex flex-col sm:flex-row gap-3">
-        {{ partial "button.html" (dict "url" "/launchpad" "text" "join the team") }}
-        {{ partial "button.html" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
+        {{ partial "sv/button" (dict "url" "/launchpad" "text" "join the team") }}
+        {{ partial "sv/button" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
     </div>
+</div>
 {{ end }}

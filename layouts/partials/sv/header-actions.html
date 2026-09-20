@@ -1,0 +1,7 @@
+{{- /*
+    sv/header-actions.html -- Join button for the main site.
+    Shadows theme/layouts/partials/sv/header-actions.html
+*/ -}}
+{{- /* Explicitly mention responsive classes so hugo_stats.json catches them. */ -}}
+{{- $dummy := "hidden sm:inline" -}}
+{{ partial "sv/button" (dict "url" "/launchpad" "html" `join<span class="hidden sm:inline"> us!</span>` "size" "sm") }}

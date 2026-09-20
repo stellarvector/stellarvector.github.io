@@ -20,8 +20,8 @@ We play a CTF roughly every month, and organise events to further improve (y)our
 
 ## Getting in touch
 
-Our [Discord server]({{< param "social.discord_invite_link" >}}) is the main communication channel. Feel free to join, it is the best way to get to know everyone!
+Our [Discord server]({{< param "social.discord" >}}) is the main communication channel. Feel free to join, it is the best way to get to know everyone!
 
-We also run a mailing list through [Google Groups]({{< param "social.mailing_list_url" >}}). When requesting access, tell us a bit about yourself!
+We also run a mailing list through [Google Groups]({{< param "social.email" >}}). When requesting access, tell us a bit about yourself!
 
 If you would like to reach out directly, say hi at [{{< param email >}}](mailto:{{< param email >}}).

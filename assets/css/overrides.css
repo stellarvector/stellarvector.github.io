@@ -1,3 +1,8 @@
+/*
+ * Reset letter-spacing on bold text.
+ * The theme tracks out bold by default (0.05em); this site prefers the
+ * tighter original IBM Plex/Space Grotesk fit.
+ */
 b,
 strong,
 .prose :where(b),

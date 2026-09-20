@@ -1,50 +1,52 @@
 {{ define "main" }}
-{{ partial "page-heading.html" (dict "label" "ls -la /events" "title" .Title) }}
+<div class="max-w-5xl mx-auto px-5 py-10">
+    {{ partial "sv/page-heading" (dict "label" "ls -la /events" "title" .Title) }}
 
-{{ $events := partial "events.html" . }}
-{{ $grid := "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" }}
+    {{ $events := partial "events.html" . }}
+    {{ $grid := "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" }}
 
-<section class="mt-10" aria-labelledby="upcoming">
-    <h2 id="upcoming" class="!mt-0">Upcoming events</h2>
+    <section class="mt-10" aria-labelledby="upcoming">
+        <h2 id="upcoming" class="!mt-0">Upcoming events</h2>
 
-    {{ with $events.upcoming }}
-        <div class="{{ $grid }} mt-6 mb-16">
-            {{ range . }}
-                {{ partial "event-card.html" (dict "page" .) }}
-            {{ end }}
-        </div>
-    {{ else }}
-        <div class="mt-6 mb-16">
-            {{ partial "events-empty.html" $ }}
-        </div>
-    {{ end }}
-</section>
-
-<section aria-labelledby="past">
-    <h2 id="past" class="mb-6">Past events</h2>
-
-    {{ $seasons := slice }}
-    {{ range $events.past }}
-        {{ $season := path.Base .File.Dir }}
-        {{ if not (in $seasons $season) }}
-            {{ $seasons = $seasons | append $season }}
-        {{ end }}
-    {{ end }}
-
-    {{ range $season := $seasons }}
-        <div class="mb-10">
-            {{ if ne $season "events" }}
-                <p class="sv-label mb-4">{{ $season }}</p>
-            {{ end }}
-
-            <div class="{{ $grid }}">
-                {{ range $events.past }}
-                    {{ if eq (path.Base .File.Dir) $season }}
-                        {{ partial "event-card.html" (dict "page" .) }}
-                    {{ end }}
+        {{ with $events.upcoming }}
+            <div class="{{ $grid }} mt-6 mb-16">
+                {{ range . }}
+                    {{ partial "event-card.html" (dict "page" .) }}
                 {{ end }}
             </div>
-        </div>
-    {{ end }}
-</section>
+        {{ else }}
+            <div class="mt-6 mb-16">
+                {{ partial "events-empty.html" $ }}
+            </div>
+        {{ end }}
+    </section>
+
+    <section aria-labelledby="past">
+        <h2 id="past" class="mb-6">Past events</h2>
+
+        {{ $seasons := slice }}
+        {{ range $events.past }}
+            {{ $season := path.Base .File.Dir }}
+            {{ if not (in $seasons $season) }}
+                {{ $seasons = $seasons | append $season }}
+            {{ end }}
+        {{ end }}
+
+        {{ range $season := $seasons }}
+            <div class="mb-10">
+                {{ if ne $season "events" }}
+                    <p class="sv-label mb-4">{{ $season }}</p>
+                {{ end }}
+
+                <div class="{{ $grid }}">
+                    {{ range $events.past }}
+                        {{ if eq (path.Base .File.Dir) $season }}
+                            {{ partial "event-card.html" (dict "page" .) }}
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+        {{ end }}
+    </section>
+</div>
 {{ end }}
