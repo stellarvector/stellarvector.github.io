@@ -1,15 +1,23 @@
-# Stellar Vector website
+# Stellar Vector main site
+
+Main site for [stellarvector.be](https://stellarvector.be): who we are, events, calendar, and the launchpad.
+
+Chrome, tokens and shared components come from `github.com/stellarvector/theme`; read its README before adding a component here.
 
 ## Running locally
 
-It should be as easy as (you might need to use sudo):
+1. Install Hugo (extended version, >= 0.165.0) and Node.js.
+2. Run `npm ci` to install the toolchain.
+3. Run `hugo server`.
+4. Go to http://localhost:1313/
 
-0. (Optionally: execute `bundle config path 'vendor/bundle'` to install gems locally)
-1. `bundle install`
-2. `bundle exec jekyll serve`
-3. go to http://127.0.0.1:4000/
+The theme is pulled in as a Hugo module. Run `hugo mod get -u github.com/stellarvector/theme` to update it.
 
-Using Docker:
-```bash
-docker run --rm --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" --env JEKYLL_ENV=development -p 4000:4000 jekyll/jekyll:4 jekyll serve
-```
+## Ownership
+
+| Concern | Source of truth |
+|---|---|
+| Events model and templates | This repository |
+| Organization info (about, calendar) | This repository |
+| The typewriter and console banner | This repository |
+| Chrome, tokens, and base behavior | Shared Hugo module |

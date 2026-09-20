@@ -1,7 +1,6 @@
-public
-resources
+public/
+resources/
 .hugo_build.lock
 hugo_stats.json
 .DS_Store
-vendor
-node_modules
+node_modules/

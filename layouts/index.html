@@ -1,26 +1,15 @@
 {{ define "main" }}
     {{ $events := partial "events.html" . }}
 
-    <section class="relative overflow-hidden border-b border-line-strong">
-        {{- /* Decorative coordinate grid, faded at the edges. Never interactive. */}}
-        <div class="sv-grid sv-grid-fade pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+    {{ $subtitle := printf `<p class="grid font-mono text-sm sm:text-base md:text-lg text-body"><span class="col-start-1 row-start-1 sv-caret invisible" aria-hidden="true">%s</span><span class="col-start-1 row-start-1 sv-caret" data-typed>%s</span></p>` .Params.tagline .Params.tagline }}
+    {{ $actions := printf `<div class="mt-8 flex flex-col sm:flex-row gap-3">%s %s</div>` (partial "sv/button" (dict "url" "/launchpad" "text" "join the team")) (partial "sv/button" (dict "url" "/events" "text" "browse events" "variant" "outline")) }}
 
-        <div class="relative mx-auto w-full max-w-5xl px-5 py-12 sm:py-16">
-            {{ partial "sv/command" (dict "text" "whoami" "class" "mb-3") }}
-
-            <h1 class="sv-marker !mt-0 !mb-4"><span class="sv-glitch sv-glitch-auto" data-text="{{ .Site.Title }}">{{ .Site.Title }}</span></h1>
-
-            <p class="grid font-mono text-sm sm:text-base md:text-lg text-body">
-                <span class="col-start-1 row-start-1 sv-caret invisible" aria-hidden="true">{{ .Params.tagline }}</span>
-                <span class="col-start-1 row-start-1 sv-caret" data-typed>{{ .Params.tagline }}</span>
-            </p>
-
-            <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                {{ partial "sv/button" (dict "url" "/launchpad" "text" "join the team") }}
-                {{ partial "sv/button" (dict "url" "/events" "text" "browse events" "variant" "outline") }}
-            </div>
-        </div>
-    </section>
+    {{ partial "sv/hero" (dict 
+        "prompt" "whoami" 
+        "title" .Site.Title 
+        "subtitle" ($subtitle | safeHTML)
+        "extra" ($actions | safeHTML)
+    ) }}
 
     <div class="max-w-5xl mx-auto px-5 py-10 sm:py-12">
         {{ with $events.upcoming }}
